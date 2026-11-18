@@ -185,9 +185,10 @@ const SCENES = {
     <rect x="68" y="55" width="40" height="9" rx="4.5" fill="#8a7f66"/>`,
 };
 
+const SCENE_H = 42; // CSS-independent drawn-scene height, shrunk to make room for big headlines
 const sceneSVG = (it) => {
   const fn = SCENES[it.num] || SCENES[1];
-  return `<svg class="scene" viewBox="0 0 150 110" width="150" height="110" role="img" aria-label="${esc(it.scene)}"><title>${esc(it.scene)}</title><g transform="scale(1.25 1.2222222)">${fn(ink(it.region))}</g></svg>`;
+  return `<svg class="scene" viewBox="0 0 150 110" width="150" height="${SCENE_H}" preserveAspectRatio="xMidYMin slice" role="img" aria-label="${esc(it.scene)}"><title>${esc(it.scene)}</title><g transform="scale(1.25 1.2222222)">${fn(ink(it.region))}</g></svg>`;
 };
 
 // ---- simple outline world map, small, with eleven numbered dots --------------
@@ -205,7 +206,21 @@ const DOTS = [
   [6, 906, 200], [7, 552, 96], [8, 722, 66], [9, 286, 196], [10, 592, 180],
   [11, 512, 112],
 ];
-const featured = sorted.slice(0, 11);
+const featured = sorted.slice(0, 6);
+// Short display headlines: at most five words each, so the 44px type fits its column.
+const SHORT = {
+  1: 'Rain hits Rhine',
+  2: 'Fires fade out',
+  3: 'Chip deal done',
+  4: 'Truce holds on',
+  5: 'Jabs reach far',
+  6: 'Gale skims coast',
+  7: 'Costs ease again',
+  8: 'Moon relay flies',
+  9: 'Court backs rule',
+  10: 'Coast rail runs',
+  11: 'Data law binds',
+};
 const byNum = Object.fromEntries(featured.map((f) => [f.num, f]));
 const dots = DOTS.map(([n, x, y]) => {
   const r = (byNum[n] && byNum[n].region) || 'Europe';
@@ -222,7 +237,7 @@ for (const f of FIGURES)
   if (!sorted.some((s) => s.fact.includes(f.v)))
     console.warn('WARN figure not found verbatim:', f.v);
 
-const list = sorted.slice(11);
+const list = sorted.slice(6);
 
 const html = `<!DOCTYPE html>
 <html lang="en">
@@ -241,21 +256,21 @@ const html = `<!DOCTYPE html>
   .mapttl { font-size:7px; font-weight:700; letter-spacing:1.6px; color:#7a7362; margin-bottom:2px; }
   .map { width:100%; height:auto; display:block; }
   .mapcap { font-size:7.5px; letter-spacing:0.8px; text-transform:uppercase; color:#7a7362; margin-top:2px; }
-  .date { text-align:center; font-family:'DejaVu Serif', Georgia, serif; font-weight:700; font-size:56px; line-height:1.02; margin-top:3px; }
+  .date { text-align:center; font-family:'DejaVu Serif', Georgia, serif; font-weight:700; font-size:64px; line-height:1.02; margin-top:3px; }
   .tally { text-align:center; font-size:12px; font-weight:700; letter-spacing:3px; color:#a8281f; margin-top:4px; }
   .hr { border:0; border-top:3px double #1a1811; margin-top:6px; }
   .featured { display:grid; grid-template-columns:repeat(6,1fr); gap:7px; margin-top:7px; }
   .card { border:1px solid #e3dbca; border-top:3px solid var(--cc); border-radius:4px; background:#fffdf8; padding:3px 3px 5px; display:flex; flex-direction:column; align-items:center; overflow:hidden; }
   .card svg.scene { display:block; border:1px solid #e6ded0; border-radius:2px; }
-  .card .rg { font-size:7px; font-weight:700; letter-spacing:0.4px; text-transform:uppercase; color:#57503f; margin-top:3px; text-align:center; }
-  .card h3 { font-family:'DejaVu Serif', Georgia, serif; font-size:10.5px; font-weight:700; line-height:1.05; margin-top:2px; text-align:center; }
-  .card p { font-size:8px; line-height:1.1; color:#514a3a; margin-top:2px; text-align:center; }
+  .card .rg { font-size:15px; font-weight:700; letter-spacing:0.4px; text-transform:uppercase; color:#57503f; margin-top:3px; text-align:center; }
+  .card h3 { font-family:'DejaVu Serif', Georgia, serif; font-size:44px; font-weight:700; line-height:1.12; margin-top:2px; text-align:center; width:100%; overflow-wrap:break-word; }
+  .card p { font-size:17px; line-height:1.1; color:#514a3a; margin-top:2px; text-align:center; width:100%; overflow-wrap:anywhere; }
   .numhead { text-align:center; font-size:10px; font-weight:700; letter-spacing:4px; text-transform:uppercase; color:#7a7362; margin-top:7px; }
   .numbers { display:flex; border-top:2px solid #1a1811; border-bottom:2px solid #1a1811; margin-top:3px; }
   .num { flex:1 1 0; text-align:center; padding:5px 0 6px; }
   .num + .num { border-left:1px solid #1a1811; }
   .num .v { font-family:'DejaVu Serif', Georgia, serif; font-size:84px; font-weight:700; line-height:1; white-space:nowrap; }
-  .num .l { font-size:9.5px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#7a7362; margin-top:3px; }
+  .num .l { font-size:17px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#7a7362; margin-top:3px; }
   .list { margin-top:7px; border-top:2px solid #1a1811; padding-top:6px; column-count:2; column-gap:30px; column-rule:1px solid #b3ab95; }
   .item { display:flex; gap:6px; align-items:baseline; font-size:11px; line-height:1.46; break-inside:avoid; }
   .item b { flex:0 0 auto; min-width:17px; text-align:right; font-weight:700; }
@@ -274,7 +289,7 @@ const html = `<!DOCTYPE html>
     </div>
     <div class="mapwrap">
       <div class="mapbox"><div class="mapttl">THE WORLD &middot; ELEVEN STORIES MARKED</div>${mapSVG}</div>
-      <div class="mapcap">The eleven numbered dots mark the featured stories 1&ndash;11</div>
+      <div class="mapcap">The numbered dots mark the day&rsquo;s top stories</div>
     </div>
   </div>
 
@@ -286,7 +301,7 @@ const html = `<!DOCTYPE html>
 ${featured.map((it) => `    <div class="card" style="--cc:${ink(it.region)}">
       ${sceneSVG(it)}
       <div class="rg">${esc(it.region)} &middot; ${kick(it.kicker)}</div>
-      <h3>${esc(it.headline)}</h3>
+      <h3>${esc(SHORT[it.num] || it.headline)}</h3>
       <p>${esc(it.fact)}</p>
     </div>`).join('\n')}
   </div>
@@ -307,6 +322,18 @@ ${list.map((it) => `    <div class="item"><b style="color:${ink(it.region)}">${i
 
   <div id="diag"></div>
   <script>
+    // Fit the fixed 1024px page to the viewport so a narrow render (e.g. 300px)
+    // shows the whole page shrunk, exactly as a downscaled image would.
+    (function () {
+      function fit() {
+        var s = window.innerWidth / 1024;
+        if (Math.abs(s - 1) < 0.002) { document.body.style.transform = ''; return; }
+        document.body.style.transformOrigin = 'top left';
+        document.body.style.transform = 'scale(' + s + ')';
+      }
+      window.addEventListener('resize', fit);
+      fit();
+    })();
     window.__diag = function () {
       var out = {
         w: document.body.scrollWidth, h: document.body.scrollHeight,
@@ -333,11 +360,11 @@ ${list.map((it) => `    <div class="item"><b style="color:${ink(it.region)}">${i
       var d = document.querySelector('.date'); if (d.scrollWidth > d.clientWidth + 1) bad.push('date-wide:' + d.scrollWidth);
       document.querySelectorAll('.num .v').forEach(function (x) { if (x.scrollWidth > x.clientWidth + 1) bad.push('figure-wide:' + x.textContent); });
       document.querySelectorAll('.item .ht').forEach(function (x) { if (x.scrollWidth > x.clientWidth + 1) bad.push('list-truncated'); });
-      if (out.featured !== 11) bad.push('featured!=' + out.featured);
-      if (out.items !== 25) bad.push('items!=' + out.items);
+      if (out.featured !== 6) bad.push('featured!=' + out.featured);
+      if (out.items !== 30) bad.push('items!=' + out.items);
       if (out.dots !== 11) bad.push('dots!=' + out.dots);
       if (out.figs !== 2) bad.push('figs!=' + out.figs);
-      if (out.scenePx !== '150x110') bad.push('scene!=' + out.scenePx);
+      if (out.scenePx !== '150' + 'x' + ${SCENE_H}) bad.push('scene!=' + out.scenePx);
       out.overflow = bad;
       document.getElementById('diag').textContent = JSON.stringify(out);
       return out;
