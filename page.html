@@ -4,322 +4,197 @@
 <meta charset="utf-8">
 <title>THE WORLD TODAY — Wednesday 18 November 2026</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { width: 1024px; height: 1024px; }
-  body {
-    background: #f4f0e6;
-    color: #17150f;
-    font-family: Georgia, 'Times New Roman', 'DejaVu Serif', serif;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    padding: 12px 18px 12px;
-  }
-  /* ---------- masthead ---------- */
-  .masthead { flex: 0 0 auto; border-bottom: 3px double #17150f; padding-bottom: 5px; }
-  .brand {
-    text-align: center;
-    font-family: 'DejaVu Serif', Georgia, serif;
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 1.0;
-    letter-spacing: 6px;
-  }
-  .date {
-    text-align: center;
-    font-family: 'DejaVu Serif', Georgia, serif;
-    font-weight: 700;
-    font-size: 49px;
-    line-height: 1.06;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-    margin-top: 1px;
-  }
-  .strap {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    font-family: 'DejaVu Sans', Arial, sans-serif;
-    font-size: 14px;
-    letter-spacing: 1.6px;
-    text-transform: uppercase;
-    color: #3a352b;
-    border-top: 1px solid #b9b2a2;
-    padding-top: 4px;
-    margin-top: 5px;
-  }
-  .strap .accent { color: #b3261e; font-weight: 700; }
-
-  /* ---------- top: lead + map ---------- */
-  .top { flex: 0 0 auto; display: flex; gap: 18px; height: 258px; padding: 10px 0; border-bottom: 2px solid #17150f; }
-  .lead { flex: 1 1 auto; overflow: hidden; }
-  .lead .lk {
-    display: inline-block;
-    background: #b3261e;
-    color: #fff;
-    font-family: 'DejaVu Sans', Arial, sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 3px 9px;
-    margin-bottom: 8px;
-  }
-  .lead h1 { font-size: 36px; line-height: 1.05; letter-spacing: -0.4px; margin-bottom: 8px; }
-  .lead .standfirst { font-size: 16px; line-height: 1.32; color: #3a352b; font-style: italic; }
-
-  .mapbox { flex: 0 0 372px; border-left: 1px solid #b9b2a2; padding-left: 16px; display: flex; flex-direction: column; }
-  .mapcap {
-    font-family: 'DejaVu Sans', Arial, sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1.8px;
-    text-transform: uppercase;
-    color: #b3261e;
-    margin-bottom: 5px;
-  }
-  .mapbox svg { width: 356px; height: 196px; background: #eae4d5; border: 1px solid #cfc7b5; }
-  .land { fill: #cfd6c9; stroke: #6b7566; stroke-width: 1; stroke-dasharray: 2.4 2.4; stroke-linejoin: round; }
-  .dot { fill: #b3261e; stroke: #fff; stroke-width: 1.3; }
-  .dotlbl {
-    font-family: 'DejaVu Sans', Arial, sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    fill: #1c2b21;
-    paint-order: stroke;
-    stroke: #eae4d5;
-    stroke-width: 3px;
-    stroke-linejoin: round;
-  }
-
-  /* ---------- briefs: three dense columns ---------- */
-  .columns { flex: 1 1 auto; display: flex; gap: 14px; padding-top: 8px; min-height: 0; overflow: hidden; }
-  .col { flex: 1 1 0; min-width: 0; border-right: 1px solid #b9b2a2; padding-right: 12px; }
-  .col:last-child { border-right: none; padding-right: 0; }
-  .item { padding-bottom: 4px; margin-bottom: 4px; border-bottom: 1px dotted #c3bba8; }
-  .item:last-child { border-bottom: none; }
-  .item .r1 { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1px; }
-  .item .k {
-    color: #b3261e;
-    font-family: 'DejaVu Sans', Arial, sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-  }
-  .item .rg {
-    font-family: 'DejaVu Sans', Arial, sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    color: #6b6455;
-    white-space: nowrap;
-    padding-left: 6px;
-  }
-  .item .t { display: block; font-size: 13.5px; line-height: 1.17; font-weight: 600; }
-  .item .s {
-    font-family: 'DejaVu Sans', Arial, sans-serif;
-    font-size: 10.5px;
-    font-weight: 400;
-    color: #6b6455;
-    letter-spacing: 0.6px;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-  #diag { display: none; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { width:1024px; height:1024px; }
+  body { background:#f4f0e6; color:#17150f; overflow:hidden; font-family:'DejaVu Sans', Arial, sans-serif; display:flex; flex-direction:column; padding:14px 18px 12px; }
+  #diag { display:none; }
+  /* masthead */
+  .brand { text-align:center; font-family:'DejaVu Serif', Georgia, serif; font-weight:700; font-size:25px; letter-spacing:11px; }
+  .dsub { text-align:center; font-size:10.5px; letter-spacing:4px; color:#6b6455; margin-top:3px; }
+  .date { text-align:center; font-family:'DejaVu Serif', Georgia, serif; font-weight:700; font-size:49px; line-height:1.04; letter-spacing:0.4px; margin-top:5px; white-space:nowrap; }
+  .rule { border:0; border-top:3px double #17150f; margin-top:7px; }
+  .count { text-align:center; font-size:15px; font-weight:700; letter-spacing:4px; color:#b3261e; margin-top:5px; }
+  /* featured strip */
+  .feat { display:grid; grid-template-columns:repeat(5,1fr); grid-template-rows:repeat(2,1fr); gap:9px; margin-top:11px; height:250px; }
+  .bx { border:1px solid #ddd6c6; border-top:4px solid var(--ac); border-radius:5px; padding:6px 8px 6px; display:flex; flex-direction:column; overflow:hidden; }
+  .bxtop { display:flex; align-items:center; gap:6px; }
+  .bxi { display:flex; flex:0 0 auto; }
+  .bxr { font-size:10px; font-weight:700; letter-spacing:0.7px; text-transform:uppercase; color:#3a352b; }
+  .bxh { font-family:'DejaVu Serif', Georgia, serif; font-size:12.8px; font-weight:700; line-height:1.15; margin-top:4px; overflow:hidden; }
+  .bxf { margin-top:auto; font-size:10px; line-height:1.15; color:#4a4436; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  /* by the numbers */
+  .nums { display:flex; margin-top:11px; border-top:2px solid #17150f; border-bottom:2px solid #17150f; padding:6px 0; }
+  .nb { flex:1 1 0; text-align:center; }
+  .nbv { font-family:'DejaVu Serif', Georgia, serif; font-size:38px; font-weight:700; line-height:0.95; letter-spacing:-1px; }
+  .nbl { font-size:10px; font-weight:700; letter-spacing:1.3px; text-transform:uppercase; color:#6b6455; margin-top:3px; }
+  .cap { font-size:11px; font-weight:700; letter-spacing:2.4px; text-transform:uppercase; color:#6b6455; text-align:center; margin-top:4px; }
+  /* map + list band */
+  .band { flex:1 1 auto; display:flex; gap:16px; margin-top:11px; min-height:0; }
+  .mapcol { flex:1.9 1 0; display:flex; flex-direction:column; min-width:0; }
+  .maptop { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px; }
+  .maptop .h { font-family:'DejaVu Serif', Georgia, serif; font-size:16px; font-weight:700; }
+  .maptop .leg { font-size:10px; letter-spacing:1.2px; text-transform:uppercase; color:#6b6455; }
+  .mapbox { flex:1 1 auto; border:1px solid #cfc7b5; background:#eae4d5; border-radius:5px; min-height:0; }
+  .mapbox svg { display:block; width:100%; height:100%; }
+  .land { fill:#cfd6c9; stroke:#6b7566; stroke-width:1; stroke-dasharray:2.4 2.4; stroke-linejoin:round; }
+  .listcol { flex:1 1 0; display:flex; flex-direction:column; min-width:0; border-left:1px solid #cfc7b5; padding-left:13px; overflow:hidden; }
+  .listhead { font-size:11px; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:#17150f; border-bottom:2px solid #17150f; padding-bottom:4px; margin-bottom:3px; }
+  .rows { flex:1 1 auto; min-height:0; display:flex; flex-direction:column; justify-content:space-between; }
+  .row { display:flex; align-items:baseline; gap:6px; white-space:nowrap; overflow:hidden; }
+  .rn { flex:0 0 auto; font-size:11px; font-weight:700; min-width:15px; text-align:right; }
+  .rr { flex:0 0 auto; font-size:8.5px; font-weight:700; letter-spacing:0.3px; text-transform:uppercase; }
+  .rh { font-size:11px; overflow:hidden; text-overflow:ellipsis; }
+  /* footer */
+  .foot { flex:0 0 auto; margin-top:9px; border-top:2px solid #17150f; padding-top:6px; display:flex; justify-content:space-between; gap:12px; }
+  .foot .s { font-size:10px; letter-spacing:1.2px; text-transform:uppercase; color:#6b6455; }
+  .foot .d { font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#b3261e; text-align:right; }
 </style>
 </head>
 <body>
-  <header class="masthead">
+  <header>
     <div class="brand">THE WORLD TODAY</div>
+    <div class="dsub">INDEPENDENT WORLD EDITION</div>
     <div class="date">WEDNESDAY 18 NOVEMBER 2026</div>
-    <div class="strap">
-      <span class="accent">32 stories &middot; six continents</span>
-      <span>independent world edition</span>
-    </div>
+    <hr class="rule">
+    <div class="count">40 STORIES · 6 CONTINENTS · ONE DAY</div>
   </header>
 
-  <section class="top">
-    <div class="lead">
-      <span class="lk">climate finance</span>
-      <h1>Loss-and-damage fund pays out its first $40bn after pledges clear</h1>
-      <p class="standfirst">The UN-backed facility approved its maiden disbursement after 41 donor states settled arrears. Coastal ministries in eight countries draw the first grants next month.</p>
+  <section class="feat">
+    <div class="bx" style="--ac:#3b5b8c;background:#e8edf5">
+      <div class="bxtop"><span class="bxi" style="color:#3b5b8c"><svg class="ic" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c1 3 5 5 5 9a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-2-1-4 1-8z"/></svg></span><span class="bxr">Europe</span></div>
+      <div class="bxh">Wildfire season runs into a fifth autumn week</div>
+      <div class="bxf">480,000 hectares burned</div>
     </div>
-    <div class="mapbox">
-      <div class="mapcap">World &middot; stories by region</div>
-      <svg viewBox="0 0 330 180" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Dotted world map with a marker for each region covered">
-        <path class="land" d="M11,25 L36.7,20 L77.9,18 L96.3,30 L114.6,40 L105.4,45 L91.7,65 L76.1,74 L68.8,70 L50.4,50 L45.8,35 Z"/>
-        <path class="land" d="M123.8,30 L146.7,20 L142,8 L110,8 L111.8,22 Z"/>
-        <path class="land" d="M91.7,80 L110,80 L132.9,95 L130.2,112 L114.6,125 L100.8,145 L96.3,135 L99,110 L91.7,90 Z"/>
-        <path class="land" d="M155.8,54 L165,46 L174.2,45 L190.7,45 L201.7,42 L192.5,30 L190.7,20 L174.2,32 L165,40 Z"/>
-        <path class="land" d="M201.7,42 L220,35 L247.5,35 L275,40 L293.3,40 L295,45 L288.8,70 L275,80 L261.3,80 L256.7,90 L238.3,82 L220,65 L206.3,78 L197,58 Z"/>
-        <path class="land" d="M149.4,75 L150.3,85 L173.3,86 L174.2,92 L176,108 L183.3,125 L194.3,120 L204.5,102 L211.8,78 L197,58 L174.2,53 L159.5,54 Z"/>
-        <path class="land" d="M268.6,112 L284.2,102 L295,101 L305.1,118 L298.6,128 L284.2,122 L270.4,124 Z"/>
-        <circle cx="78" cy="58" r="4" class="dot"/>
-        <text x="84.5" y="61.5" class="dotlbl" text-anchor="start">Americas</text>
-        <circle cx="183" cy="45" r="4" class="dot"/>
-        <text x="189.5" y="48.5" class="dotlbl" text-anchor="start">Europe</text>
-        <circle cx="180" cy="102" r="4" class="dot"/>
-        <text x="186.5" y="105.5" class="dotlbl" text-anchor="start">Africa</text>
-        <circle cx="207" cy="81" r="4" class="dot"/>
-        <text x="213.5" y="84.5" class="dotlbl" text-anchor="start">Middle East</text>
-        <circle cx="258" cy="50" r="4" class="dot"/>
-        <text x="264.5" y="53.5" class="dotlbl" text-anchor="start">Asia</text>
-        <circle cx="287" cy="122" r="4" class="dot"/>
-        <text x="280.5" y="125.5" class="dotlbl" text-anchor="end">Oceania</text>
-      </svg>
+    <div class="bx" style="--ac:#a4442e;background:#f4e7e2">
+      <div class="bxtop"><span class="bxi" style="color:#a4442e"><svg class="ic" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4a8 8 0 0 1 8 8c0 3-2 5-5 5"/><path d="M12 20a8 8 0 0 1-8-8c0-3 2-5 5-5"/><circle cx="12" cy="12" r="1.6"/></svg></span><span class="bxr">Americas</span></div>
+      <div class="bxh">A category 4 cyclone skirts a gulf coast</div>
+      <div class="bxf">gusts reach 240 km/h offshore</div>
+    </div>
+    <div class="bx" style="--ac:#a6791c;background:#f5edd9">
+      <div class="bxtop"><span class="bxi" style="color:#a6791c"><svg class="ic" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="10.5" y="10.5" width="3" height="3"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg></span><span class="bxr">Asia</span></div>
+      <div class="bxh">A new fab begins pilot runs of 2nm chips</div>
+      <div class="bxf">$19bn plant, 3,000 staff</div>
+    </div>
+    <div class="bx" style="--ac:#5f8a37;background:#eaf1df">
+      <div class="bxtop"><span class="bxi" style="color:#5f8a37"><svg class="ic" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7z"/></svg></span><span class="bxr">Africa</span></div>
+      <div class="bxh">A vaccine drive reaches 14 million children</div>
+      <div class="bxf">14 million jabs given</div>
+    </div>
+    <div class="bx" style="--ac:#8a5a9e;background:#efe6f4">
+      <div class="bxtop"><span class="bxi" style="color:#8a5a9e"><svg class="ic" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15h16l-2.5 4h-11z"/><rect x="7" y="10" width="3" height="4"/><rect x="11" y="10" width="3" height="4"/><path d="M6 12h12"/></svg></span><span class="bxr">Middle East</span></div>
+      <div class="bxh">A canal reports its busiest container month</div>
+      <div class="bxf">1,900 ships cross in 30 days</div>
+    </div>
+    <div class="bx" style="--ac:#2f8f8a;background:#e2efee">
+      <div class="bxtop"><span class="bxi" style="color:#2f8f8a"><svg class="ic" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span><span class="bxr">Oceania</span></div>
+      <div class="bxh">A Pacific ocean treaty adds three signatories</div>
+      <div class="bxf">covers 4.2m sq km of sea</div>
+    </div>
+    <div class="bx" style="--ac:#3b5b8c;background:#e8edf5">
+      <div class="bxtop"><span class="bxi" style="color:#3b5b8c"><svg class="ic" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10 12 5l8 5"/><path d="M6 10v8M10 10v8M14 10v8M18 10v8"/><path d="M3 18h18"/></svg></span><span class="bxr">Europe</span></div>
+      <div class="bxh">Lawmakers pass a digital-competition bill</div>
+      <div class="bxf">fines up to 6% of turnover</div>
+    </div>
+    <div class="bx" style="--ac:#a4442e;background:#f4e7e2">
+      <div class="bxtop"><span class="bxi" style="color:#a4442e"><svg class="ic" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="9" rx="1.5"/><path d="M9 4h6v7H9z"/><path d="M9.5 15h5"/></svg></span><span class="bxr">Americas</span></div>
+      <div class="bxh">A national vote sets a turnout record</div>
+      <div class="bxf">78% of electors cast a ballot</div>
+    </div>
+    <div class="bx" style="--ac:#a6791c;background:#f5edd9">
+      <div class="bxtop"><span class="bxi" style="color:#a6791c"><svg class="ic" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h17"/><path d="M6 20v-7M11 20V5M16 20v-10M20 20V9"/></svg></span><span class="bxr">Asia</span></div>
+      <div class="bxh">Exports rebound as chip demand recovers</div>
+      <div class="bxf">orders up 9.4% year on year</div>
+    </div>
+    <div class="bx" style="--ac:#5f8a37;background:#eaf1df">
+      <div class="bxtop"><span class="bxi" style="color:#5f8a37"><svg class="ic" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15h18"/><path d="M5 15a7 7 0 0 1 14 0"/><path d="M7 15v5"/><path d="M17 15v5"/></svg></span><span class="bxr">Africa</span></div>
+      <div class="bxh">A river rail bridge reopens after repairs</div>
+      <div class="bxf">spans 1.1 km across a delta</div>
     </div>
   </section>
 
-  <section class="columns">
-    <div class="col" data-col="1">
-      <p class="item">
-        <span class="r1"><span class="k">energy</span><span class="rg">Asia</span></span>
-        <span class="t">Rajasthan solar auction hits a record low tariff <span class="s">Reuters</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">politics</span><span class="rg">Asia</span></span>
-        <span class="t">Sri Lanka passes a delayed anti-corruption bill <span class="s">AP</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">space</span><span class="rg">Europe</span></span>
-        <span class="t">ESA clears a robotic mission to a Martian moon <span class="s">AFP</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">economy</span><span class="rg">Europe</span></span>
-        <span class="t">Eurozone inflation slows to 1.9%, a three-year low <span class="s">BBC</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">monetary policy</span><span class="rg">Americas</span></span>
-        <span class="t">Fed holds rates for a fourth straight meeting <span class="s">AP</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">disaster</span><span class="rg">Americas</span></span>
-        <span class="t">Magnitude 6.1 quake strikes central Chile <span class="s">Reuters</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">health</span><span class="rg">Africa</span></span>
-        <span class="t">Cholera cases fall 22% across the Sahel <span class="s">AFP</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">trade</span><span class="rg">Africa</span></span>
-        <span class="t">Kenya and Somalia sign a border trade pact <span class="s">Reuters</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">energy</span><span class="rg">Middle East</span></span>
-        <span class="t">OPEC+ keeps output steady for a third month <span class="s">Reuters</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">rugby</span><span class="rg">Oceania</span></span>
-        <span class="t">New Zealand seals the series with a late try <span class="s">AP</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">climate</span><span class="rg">Oceania</span></span>
-        <span class="t">Australia logs a decade-high winter coral cover <span class="s">AFP</span></span>
-      </p>
+  <section class="nums">
+    <div class="nb"><div class="nbv">480,000</div><div class="nbl">hectares burned</div></div>
+    <div class="nb" style="border-left:1px solid #cfc7b5"><div class="nbv">240 km/h</div><div class="nbl">cyclone gusts</div></div>
+    <div class="nb" style="border-left:1px solid #cfc7b5"><div class="nbv">14 million</div><div class="nbl">children reached</div></div>
+    <div class="nb" style="border-left:1px solid #cfc7b5"><div class="nbv">78%</div><div class="nbl">voter turnout</div></div>
+  </section>
+  <div class="cap">By the numbers &middot; taken from today&rsquo;s stories</div>
+
+  <section class="band">
+    <div class="mapcol">
+      <div class="maptop"><span class="h">Where the day happened</span><span class="leg">numbered pins = the ten featured stories</span></div>
+      <div class="mapbox">
+        <svg viewBox="0 0 340 190" preserveAspectRatio="xMidYMid meet" role="img" aria-label="World map; the ten numbered pins are the ten featured stories">
+          <path class="land" d="M18,28 L70,22 L92,34 L104,44 L88,50 L74,68 L60,74 L48,58 L34,44 Z"/><path class="land" d="M112,18 L140,14 L136,30 L112,30 Z"/><path class="land" d="M96,76 L118,78 L128,96 L120,120 L108,152 L100,140 L104,110 L94,88 Z"/><path class="land" d="M152,30 L182,26 L188,40 L176,52 L160,50 L150,42 Z"/><path class="land" d="M152,62 L182,58 L196,70 L194,96 L182,120 L166,134 L158,112 L150,86 Z"/><path class="land" d="M188,26 L248,22 L292,32 L300,46 L286,62 L262,70 L240,86 L214,80 L200,62 L190,44 Z"/><path class="land" d="M210,82 L226,80 L222,102 L212,96 Z"/><path class="land" d="M244,86 L268,84 L276,96 L258,104 L246,98 Z"/><path class="land" d="M272,118 L304,112 L316,126 L300,142 L280,138 L272,128 Z"/><g><circle cx="172" cy="40" r="10.5" fill="#3b5b8c" stroke="#f4f0e6" stroke-width="1.6"/><text x="172" y="43.9" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">1</text></g><g><circle cx="58" cy="40" r="10.5" fill="#a4442e" stroke="#f4f0e6" stroke-width="1.6"/><text x="58" y="43.9" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">2</text></g><g><circle cx="256" cy="50" r="10.5" fill="#a6791c" stroke="#f4f0e6" stroke-width="1.6"/><text x="256" y="53.9" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">3</text></g><g><circle cx="178" cy="94" r="10.5" fill="#5f8a37" stroke="#f4f0e6" stroke-width="1.6"/><text x="178" y="97.9" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">4</text></g><g><circle cx="204" cy="70" r="10.5" fill="#8a5a9e" stroke="#f4f0e6" stroke-width="1.6"/><text x="204" y="73.9" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">5</text></g><g><circle cx="296" cy="130" r="10.5" fill="#2f8f8a" stroke="#f4f0e6" stroke-width="1.6"/><text x="296" y="133.9" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">6</text></g><g><circle cx="154" cy="52" r="10.5" fill="#3b5b8c" stroke="#f4f0e6" stroke-width="1.6"/><text x="154" y="55.9" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">7</text></g><g><circle cx="100" cy="114" r="10.5" fill="#a4442e" stroke="#f4f0e6" stroke-width="1.6"/><text x="100" y="117.9" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">8</text></g><g><circle cx="216" cy="92" r="10.5" fill="#a6791c" stroke="#f4f0e6" stroke-width="1.6"/><text x="216" y="95.9" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">9</text></g><g><circle cx="162" cy="124" r="10.5" fill="#5f8a37" stroke="#f4f0e6" stroke-width="1.6"/><text x="162" y="127.9" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">10</text></g>
+        </svg>
+      </div>
     </div>
-    <div class="col" data-col="2">
-      <p class="item">
-        <span class="r1"><span class="k">space</span><span class="rg">Asia</span></span>
-        <span class="t">Japan launches a weather satellite from Tanegashima <span class="s">AFP</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">tech</span><span class="rg">Asia</span></span>
-        <span class="t">India's payments network crosses 20bn monthly <span class="s">Reuters</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">health</span><span class="rg">Europe</span></span>
-        <span class="t">WHO flags a measles resurgence in three states <span class="s">BBC</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">law</span><span class="rg">Europe</span></span>
-        <span class="t">EU court backs a 1.2bn euro fine on a rail cartel <span class="s">Reuters</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">climate</span><span class="rg">Americas</span></span>
-        <span class="t">Brazil reports a 30% fall in Amazon deforestation <span class="s">AFP</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">science</span><span class="rg">Africa</span></span>
-        <span class="t">Karoo telescope array begins a full sky survey <span class="s">AP</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">energy</span><span class="rg">Africa</span></span>
-        <span class="t">Nigeria's grid adds 1.4GW as a dam unit starts <span class="s">Reuters</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">energy</span><span class="rg">Middle East</span></span>
-        <span class="t">Qatar signs a 20-year gas deal with an Asian buyer <span class="s">Reuters</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">markets</span><span class="rg">Middle East</span></span>
-        <span class="t">Saudi sovereign fund posts a record surplus <span class="s">Bloomberg</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">economy</span><span class="rg">Oceania</span></span>
-        <span class="t">New Zealand holds its rate at 3% as housing cools <span class="s">Reuters</span></span>
-      </p>
-    </div>
-    <div class="col" data-col="3">
-      <p class="item">
-        <span class="r1"><span class="k">economy</span><span class="rg">Asia</span></span>
-        <span class="t">Indonesia cuts its key rate to steady the rupiah <span class="s">Reuters</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">trade</span><span class="rg">Asia</span></span>
-        <span class="t">Vietnam's exports rise 9% as chip demand recovers <span class="s">AP</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">energy</span><span class="rg">Europe</span></span>
-        <span class="t">Norway clears a 2.1GW offshore wind link <span class="s">AFP</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">science</span><span class="rg">Americas</span></span>
-        <span class="t">Deep-sea survey off Patagonia logs 40 new species <span class="s">AFP</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">markets</span><span class="rg">Americas</span></span>
-        <span class="t">Canada's dollar slides as factory orders fall <span class="s">Reuters</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">economy</span><span class="rg">Africa</span></span>
-        <span class="t">Ghana's currency steadies as inflation eases to 12% <span class="s">Reuters</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">climate</span><span class="rg">Middle East</span></span>
-        <span class="t">A Gulf desalination plant starts on solar power <span class="s">AFP</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">law</span><span class="rg">Middle East</span></span>
-        <span class="t">Jordan advances a water-sharing arbitration bill <span class="s">AP</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">science</span><span class="rg">Oceania</span></span>
-        <span class="t">Fiji joins a Pacific seismic-warning network <span class="s">AP</span></span>
-      </p>
-      <p class="item">
-        <span class="r1"><span class="k">politics</span><span class="rg">Oceania</span></span>
-        <span class="t">Papua New Guinea sets a national census for the new year <span class="s">AFP</span></span>
-      </p>
+    <div class="listcol">
+      <div class="listhead">The rest of the day &middot; 30 stories</div>
+      <div class="rows">
+    <div class="row" data-n="11"><span class="rn" style="color:#3b5b8c">11</span><span class="rr" style="color:#3b5b8c">Europe</span><span class="rh">An offshore wind link gets consent</span></div>
+    <div class="row" data-n="12"><span class="rn" style="color:#a4442e">12</span><span class="rr" style="color:#a4442e">Americas</span><span class="rh">A deep-sea survey logs new species</span></div>
+    <div class="row" data-n="13"><span class="rn" style="color:#a6791c">13</span><span class="rr" style="color:#a6791c">Asia</span><span class="rh">A weather satellite reaches orbit</span></div>
+    <div class="row" data-n="14"><span class="rn" style="color:#a6791c">14</span><span class="rr" style="color:#a6791c">Asia</span><span class="rh">Payments network passes 20bn a month</span></div>
+    <div class="row" data-n="15"><span class="rn" style="color:#3b5b8c">15</span><span class="rr" style="color:#3b5b8c">Europe</span><span class="rh">Officials flag a measles resurgence</span></div>
+    <div class="row" data-n="16"><span class="rn" style="color:#3b5b8c">16</span><span class="rr" style="color:#3b5b8c">Europe</span><span class="rh">A court backs a 1.2bn euro cartel fine</span></div>
+    <div class="row" data-n="17"><span class="rn" style="color:#a4442e">17</span><span class="rr" style="color:#a4442e">Americas</span><span class="rh">Deforestation in a basin falls 30%</span></div>
+    <div class="row" data-n="18"><span class="rn" style="color:#5f8a37">18</span><span class="rr" style="color:#5f8a37">Africa</span><span class="rh">A telescope array starts a sky survey</span></div>
+    <div class="row" data-n="19"><span class="rn" style="color:#5f8a37">19</span><span class="rr" style="color:#5f8a37">Africa</span><span class="rh">Grid adds 1.4 GW as dam starts</span></div>
+    <div class="row" data-n="20"><span class="rn" style="color:#8a5a9e">20</span><span class="rr" style="color:#8a5a9e">Middle East</span><span class="rh">A producer signs a 20-year gas deal</span></div>
+    <div class="row" data-n="21"><span class="rn" style="color:#8a5a9e">21</span><span class="rr" style="color:#8a5a9e">Middle East</span><span class="rh">A sovereign fund posts a surplus</span></div>
+    <div class="row" data-n="22"><span class="rn" style="color:#2f8f8a">22</span><span class="rr" style="color:#2f8f8a">Oceania</span><span class="rh">A central bank holds its rate at 3%</span></div>
+    <div class="row" data-n="23"><span class="rn" style="color:#a6791c">23</span><span class="rr" style="color:#a6791c">Asia</span><span class="rh">A key rate is cut as a currency slips</span></div>
+    <div class="row" data-n="24"><span class="rn" style="color:#a6791c">24</span><span class="rr" style="color:#a6791c">Asia</span><span class="rh">Exports rise 9% as demand returns</span></div>
+    <div class="row" data-n="25"><span class="rn" style="color:#3b5b8c">25</span><span class="rr" style="color:#3b5b8c">Europe</span><span class="rh">A deep-space probe checks a comet tail</span></div>
+    <div class="row" data-n="26"><span class="rn" style="color:#a4442e">26</span><span class="rr" style="color:#a4442e">Americas</span><span class="rh">A currency slides as orders fall</span></div>
+    <div class="row" data-n="27"><span class="rn" style="color:#5f8a37">27</span><span class="rr" style="color:#5f8a37">Africa</span><span class="rh">Inflation eases, currency steadies</span></div>
+    <div class="row" data-n="28"><span class="rn" style="color:#8a5a9e">28</span><span class="rr" style="color:#8a5a9e">Middle East</span><span class="rh">A desalination plant goes solar</span></div>
+    <div class="row" data-n="29"><span class="rn" style="color:#8a5a9e">29</span><span class="rr" style="color:#8a5a9e">Middle East</span><span class="rh">A water-sharing bill advances</span></div>
+    <div class="row" data-n="30"><span class="rn" style="color:#2f8f8a">30</span><span class="rr" style="color:#2f8f8a">Oceania</span><span class="rh">An island joins a seismic grid</span></div>
+    <div class="row" data-n="31"><span class="rn" style="color:#2f8f8a">31</span><span class="rr" style="color:#2f8f8a">Oceania</span><span class="rh">A census is set for the new year</span></div>
+    <div class="row" data-n="32"><span class="rn" style="color:#3b5b8c">32</span><span class="rr" style="color:#3b5b8c">Europe</span><span class="rh">A port strike ends in a pay deal</span></div>
+    <div class="row" data-n="33"><span class="rn" style="color:#a4442e">33</span><span class="rr" style="color:#a4442e">Americas</span><span class="rh">A hospital network clears a backlog</span></div>
+    <div class="row" data-n="34"><span class="rn" style="color:#a6791c">34</span><span class="rr" style="color:#a6791c">Asia</span><span class="rh">A typhoon forces island evacuations</span></div>
+    <div class="row" data-n="35"><span class="rn" style="color:#5f8a37">35</span><span class="rr" style="color:#5f8a37">Africa</span><span class="rh">Parliament passes a corruption bill</span></div>
+    <div class="row" data-n="36"><span class="rn" style="color:#a4442e">36</span><span class="rr" style="color:#a4442e">Americas</span><span class="rh">A grid operator adds battery storage</span></div>
+    <div class="row" data-n="37"><span class="rn" style="color:#3b5b8c">37</span><span class="rr" style="color:#3b5b8c">Europe</span><span class="rh">A rail merger clears a review</span></div>
+    <div class="row" data-n="38"><span class="rn" style="color:#5f8a37">38</span><span class="rr" style="color:#5f8a37">Africa</span><span class="rh">Neighbours sign a border trade pact</span></div>
+    <div class="row" data-n="39"><span class="rn" style="color:#a6791c">39</span><span class="rr" style="color:#a6791c">Asia</span><span class="rh">A city rolls out a flood-warning app</span></div>
+    <div class="row" data-n="40"><span class="rn" style="color:#2f8f8a">40</span><span class="rr" style="color:#2f8f8a">Oceania</span><span class="rh">A court sets a land-rights date</span></div>
+      </div>
     </div>
   </section>
+
+  <footer class="foot">
+    <span class="s">Sources: Reuters &middot; AP &middot; AFP &middot; BBC &middot; Bloomberg</span>
+    <span class="d">Every story happened, or was first reported, on this day</span>
+  </footer>
 
   <div id="diag"></div>
   <script>
     window.__diag = function () {
-      var d = document.getElementById('diag');
-      var out = { bodyScroll: document.body.scrollHeight, cols: [] };
-      document.querySelectorAll('.col').forEach(function (c) {
-        out.cols.push({ i: c.dataset.col, scroll: c.scrollHeight, client: c.clientHeight, items: c.querySelectorAll('.item').length });
-      });
-      var date = document.querySelector('.date');
-      var rng = document.createRange(); rng.selectNodeContents(date);
-      out.date = { textW: Math.round(rng.getBoundingClientRect().width), availW: 988, scrollW: date.scrollWidth, fontSize: getComputedStyle(date).fontSize };
-      out.columnsBox = Math.round(document.querySelector('.columns').getBoundingClientRect().height);
-      var last = document.querySelectorAll('.col')[2].querySelector('.item:last-child');
-      out.lastItemBottom = Math.round(last.getBoundingClientRect().bottom);
-      out.bodyBottom = 1024;
-      d.textContent = JSON.stringify(out);
+      var out = { scrollH: document.body.scrollHeight, scrollW: document.body.scrollWidth };
+      var d = document.querySelector('.date');
+      out.dateFont = getComputedStyle(d).fontSize;
+      out.dateScrollW = d.scrollWidth;
+      out.feat = document.querySelectorAll('.feat .bx').length;
+      out.rows = document.querySelectorAll('.row').length;
+      var rows = document.querySelector('.rows');
+      out.rowsBox = Math.round(rows.getBoundingClientRect().height);
+      var last = document.querySelector('.row:last-child');
+      out.lastRowBottom = Math.round(last.getBoundingClientRect().bottom);
+      out.footTop = Math.round(document.querySelector('.foot').getBoundingClientRect().top);
+      var over = [];
+      document.querySelectorAll('.bx').forEach(function (b) { if (b.scrollHeight > b.clientHeight + 1) over.push('bx:' + b.querySelector('.bxr').textContent); });
+      document.querySelectorAll('.bxf').forEach(function (f) { if (f.scrollWidth > f.clientWidth + 1) over.push('factClipped'); });
+      var trunc = [];
+      document.querySelectorAll('.row').forEach(function (r) { var h = r.querySelector('.rh'); if (h.scrollWidth > h.clientWidth + 1) trunc.push(r.dataset.n); });
+      out.truncatedRows = trunc;
+      var lr = document.querySelector('.rows');
+      if (lr.scrollHeight > lr.clientHeight + 1) over.push('listOverflow');
+      out.overflow = over;
+      document.getElementById('diag').textContent = JSON.stringify(out);
       return out;
     };
   </script>

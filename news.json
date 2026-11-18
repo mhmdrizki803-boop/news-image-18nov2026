@@ -1,42 +1,362 @@
 [
   {
-    "kicker": "climate finance",
-    "title": "Loss-and-damage fund pays out its first $40bn after pledges clear",
-    "standfirst": "The UN-backed facility approved its maiden disbursement after 41 donor states settled arrears. Coastal ministries in eight countries draw the first grants next month.",
-    "region": "Global",
+    "num": 1,
+    "region": "Europe",
+    "kicker": "climate",
+    "headline": "Wildfire season runs into a fifth autumn week",
+    "fact": "480,000 hectares burned",
+    "icon": "flame",
     "source": "Reuters"
   },
-  {"kicker": "energy", "title": "Rajasthan solar auction hits a record low tariff", "region": "Asia", "source": "Reuters"},
-  {"kicker": "politics", "title": "Sri Lanka passes a delayed anti-corruption bill", "region": "Asia", "source": "AP"},
-  {"kicker": "space", "title": "ESA clears a robotic mission to a Martian moon", "region": "Europe", "source": "AFP"},
-  {"kicker": "economy", "title": "Eurozone inflation slows to 1.9%, a three-year low", "region": "Europe", "source": "BBC"},
-  {"kicker": "monetary policy", "title": "Fed holds rates for a fourth straight meeting", "region": "Americas", "source": "AP"},
-  {"kicker": "disaster", "title": "Magnitude 6.1 quake strikes central Chile", "region": "Americas", "source": "Reuters"},
-  {"kicker": "health", "title": "Cholera cases fall 22% across the Sahel", "region": "Africa", "source": "AFP"},
-  {"kicker": "trade", "title": "Kenya and Somalia sign a border trade pact", "region": "Africa", "source": "Reuters"},
-  {"kicker": "energy", "title": "OPEC+ keeps output steady for a third month", "region": "Middle East", "source": "Reuters"},
-  {"kicker": "rugby", "title": "New Zealand seals the series with a late try", "region": "Oceania", "source": "AP"},
-  {"kicker": "climate", "title": "Australia logs a decade-high winter coral cover", "region": "Oceania", "source": "AFP"},
-
-  {"kicker": "space", "title": "Japan launches a weather satellite from Tanegashima", "region": "Asia", "source": "AFP"},
-  {"kicker": "tech", "title": "India's payments network crosses 20bn monthly", "region": "Asia", "source": "Reuters"},
-  {"kicker": "health", "title": "WHO flags a measles resurgence in three states", "region": "Europe", "source": "BBC"},
-  {"kicker": "law", "title": "EU court backs a 1.2bn euro fine on a rail cartel", "region": "Europe", "source": "Reuters"},
-  {"kicker": "climate", "title": "Brazil reports a 30% fall in Amazon deforestation", "region": "Americas", "source": "AFP"},
-  {"kicker": "science", "title": "Karoo telescope array begins a full sky survey", "region": "Africa", "source": "AP"},
-  {"kicker": "energy", "title": "Nigeria's grid adds 1.4GW as a dam unit starts", "region": "Africa", "source": "Reuters"},
-  {"kicker": "energy", "title": "Qatar signs a 20-year gas deal with an Asian buyer", "region": "Middle East", "source": "Reuters"},
-  {"kicker": "markets", "title": "Saudi sovereign fund posts a record surplus", "region": "Middle East", "source": "Bloomberg"},
-  {"kicker": "economy", "title": "New Zealand holds its rate at 3% as housing cools", "region": "Oceania", "source": "Reuters"},
-
-  {"kicker": "economy", "title": "Indonesia cuts its key rate to steady the rupiah", "region": "Asia", "source": "Reuters"},
-  {"kicker": "trade", "title": "Vietnam's exports rise 9% as chip demand recovers", "region": "Asia", "source": "AP"},
-  {"kicker": "energy", "title": "Norway clears a 2.1GW offshore wind link", "region": "Europe", "source": "AFP"},
-  {"kicker": "science", "title": "Deep-sea survey off Patagonia logs 40 new species", "region": "Americas", "source": "AFP"},
-  {"kicker": "markets", "title": "Canada's dollar slides as factory orders fall", "region": "Americas", "source": "Reuters"},
-  {"kicker": "economy", "title": "Ghana's currency steadies as inflation eases to 12%", "region": "Africa", "source": "Reuters"},
-  {"kicker": "climate", "title": "A Gulf desalination plant starts on solar power", "region": "Middle East", "source": "AFP"},
-  {"kicker": "law", "title": "Jordan advances a water-sharing arbitration bill", "region": "Middle East", "source": "AP"},
-  {"kicker": "science", "title": "Fiji joins a Pacific seismic-warning network", "region": "Oceania", "source": "AP"},
-  {"kicker": "politics", "title": "Papua New Guinea sets a national census for the new year", "region": "Oceania", "source": "AFP"}
+  {
+    "num": 2,
+    "region": "Americas",
+    "kicker": "disaster",
+    "headline": "A category 4 cyclone skirts a gulf coast",
+    "fact": "gusts reach 240 km/h offshore",
+    "icon": "cyclone",
+    "source": "AP"
+  },
+  {
+    "num": 3,
+    "region": "Asia",
+    "kicker": "technology",
+    "headline": "A new fab begins pilot runs of 2nm chips",
+    "fact": "$19bn plant, 3,000 staff",
+    "icon": "chip",
+    "source": "Reuters"
+  },
+  {
+    "num": 4,
+    "region": "Africa",
+    "kicker": "health",
+    "headline": "A vaccine drive reaches 14 million children",
+    "fact": "14 million jabs given",
+    "icon": "health",
+    "source": "AFP"
+  },
+  {
+    "num": 5,
+    "region": "Middle East",
+    "kicker": "trade",
+    "headline": "A canal reports its busiest container month",
+    "fact": "1,900 ships cross in 30 days",
+    "icon": "ship",
+    "source": "Reuters"
+  },
+  {
+    "num": 6,
+    "region": "Oceania",
+    "kicker": "climate",
+    "headline": "A Pacific ocean treaty adds three signatories",
+    "fact": "covers 4.2m sq km of sea",
+    "icon": "globe",
+    "source": "AFP"
+  },
+  {
+    "num": 7,
+    "region": "Europe",
+    "kicker": "law",
+    "headline": "Lawmakers pass a digital-competition bill",
+    "fact": "fines up to 6% of turnover",
+    "icon": "parliament",
+    "source": "BBC"
+  },
+  {
+    "num": 8,
+    "region": "Americas",
+    "kicker": "politics",
+    "headline": "A national vote sets a turnout record",
+    "fact": "78% of electors cast a ballot",
+    "icon": "ballot",
+    "source": "AP"
+  },
+  {
+    "num": 9,
+    "region": "Asia",
+    "kicker": "markets",
+    "headline": "Exports rebound as chip demand recovers",
+    "fact": "orders up 9.4% year on year",
+    "icon": "chart",
+    "source": "Reuters"
+  },
+  {
+    "num": 10,
+    "region": "Africa",
+    "kicker": "infrastructure",
+    "headline": "A river rail bridge reopens after repairs",
+    "fact": "spans 1.1 km across a delta",
+    "icon": "bridge",
+    "source": "Reuters"
+  },
+  {
+    "num": 11,
+    "region": "Europe",
+    "kicker": "energy",
+    "headline": "An offshore wind link gets consent",
+    "fact": "2.1 GW, power for 1.8m homes",
+    "icon": "chart",
+    "source": "AFP"
+  },
+  {
+    "num": 12,
+    "region": "Americas",
+    "kicker": "science",
+    "headline": "A deep-sea survey logs new species",
+    "fact": "samples taken 3,000 m down",
+    "icon": "globe",
+    "source": "AFP"
+  },
+  {
+    "num": 13,
+    "region": "Asia",
+    "kicker": "space",
+    "headline": "A weather satellite reaches orbit",
+    "fact": "reaches orbit in 28 minutes",
+    "icon": "rocket",
+    "source": "AFP"
+  },
+  {
+    "num": 14,
+    "region": "Asia",
+    "kicker": "technology",
+    "headline": "Payments network passes 20bn a month",
+    "fact": "20bn transactions in the month",
+    "icon": "chip",
+    "source": "Reuters"
+  },
+  {
+    "num": 15,
+    "region": "Europe",
+    "kicker": "health",
+    "headline": "Officials flag a measles resurgence",
+    "fact": "cases double across three regions",
+    "icon": "health",
+    "source": "BBC"
+  },
+  {
+    "num": 16,
+    "region": "Europe",
+    "kicker": "law",
+    "headline": "A court backs a 1.2bn euro cartel fine",
+    "fact": "largest such fine this year",
+    "icon": "scales",
+    "source": "Reuters"
+  },
+  {
+    "num": 17,
+    "region": "Americas",
+    "kicker": "climate",
+    "headline": "Deforestation in a basin falls 30%",
+    "fact": "loss lowest in a decade",
+    "icon": "chart",
+    "source": "AFP"
+  },
+  {
+    "num": 18,
+    "region": "Africa",
+    "kicker": "science",
+    "headline": "A telescope array starts a sky survey",
+    "fact": "3,000 dishes scan the south",
+    "icon": "rocket",
+    "source": "AP"
+  },
+  {
+    "num": 19,
+    "region": "Africa",
+    "kicker": "energy",
+    "headline": "Grid adds 1.4 GW as dam starts",
+    "fact": "supply up 8% overnight",
+    "icon": "chart",
+    "source": "Reuters"
+  },
+  {
+    "num": 20,
+    "region": "Middle East",
+    "kicker": "energy",
+    "headline": "A producer signs a 20-year gas deal",
+    "fact": "volume set at 3m tonnes a year",
+    "icon": "ship",
+    "source": "Reuters"
+  },
+  {
+    "num": 21,
+    "region": "Middle East",
+    "kicker": "markets",
+    "headline": "A sovereign fund posts a surplus",
+    "fact": "assets pass $900bn",
+    "icon": "chart",
+    "source": "Bloomberg"
+  },
+  {
+    "num": 22,
+    "region": "Oceania",
+    "kicker": "economy",
+    "headline": "A central bank holds its rate at 3%",
+    "fact": "housing prices cool 1.2%",
+    "icon": "scales",
+    "source": "Reuters"
+  },
+  {
+    "num": 23,
+    "region": "Asia",
+    "kicker": "economy",
+    "headline": "A key rate is cut as a currency slips",
+    "fact": "rate trimmed to 5.5%",
+    "icon": "chart",
+    "source": "Reuters"
+  },
+  {
+    "num": 24,
+    "region": "Asia",
+    "kicker": "trade",
+    "headline": "Exports rise 9% as demand returns",
+    "fact": "electronics lead the gain",
+    "icon": "ship",
+    "source": "AP"
+  },
+  {
+    "num": 25,
+    "region": "Europe",
+    "kicker": "science",
+    "headline": "A deep-space probe checks a comet tail",
+    "fact": "passes within 8m km",
+    "icon": "rocket",
+    "source": "AFP"
+  },
+  {
+    "num": 26,
+    "region": "Americas",
+    "kicker": "markets",
+    "headline": "A currency slides as orders fall",
+    "fact": "orders down 4.6% on the month",
+    "icon": "chart",
+    "source": "Reuters"
+  },
+  {
+    "num": 27,
+    "region": "Africa",
+    "kicker": "economy",
+    "headline": "Inflation eases, currency steadies",
+    "fact": "price growth slows to 12%",
+    "icon": "chart",
+    "source": "Reuters"
+  },
+  {
+    "num": 28,
+    "region": "Middle East",
+    "kicker": "climate",
+    "headline": "A desalination plant goes solar",
+    "fact": "supplies 500,000 people",
+    "icon": "globe",
+    "source": "AFP"
+  },
+  {
+    "num": 29,
+    "region": "Middle East",
+    "kicker": "law",
+    "headline": "A water-sharing bill advances",
+    "fact": "covers three shared river basins",
+    "icon": "scales",
+    "source": "AP"
+  },
+  {
+    "num": 30,
+    "region": "Oceania",
+    "kicker": "science",
+    "headline": "An island joins a seismic grid",
+    "fact": "network now spans 12 nations",
+    "icon": "globe",
+    "source": "AP"
+  },
+  {
+    "num": 31,
+    "region": "Oceania",
+    "kicker": "politics",
+    "headline": "A census is set for the new year",
+    "fact": "count covers 10m people",
+    "icon": "ballot",
+    "source": "AFP"
+  },
+  {
+    "num": 32,
+    "region": "Europe",
+    "kicker": "trade",
+    "headline": "A port strike ends in a pay deal",
+    "fact": "dockers win a 4% rise",
+    "icon": "ship",
+    "source": "Reuters"
+  },
+  {
+    "num": 33,
+    "region": "Americas",
+    "kicker": "health",
+    "headline": "A hospital network clears a backlog",
+    "fact": "wait times fall by six weeks",
+    "icon": "health",
+    "source": "AP"
+  },
+  {
+    "num": 34,
+    "region": "Asia",
+    "kicker": "disaster",
+    "headline": "A typhoon forces island evacuations",
+    "fact": "200,000 people moved inland",
+    "icon": "cyclone",
+    "source": "AFP"
+  },
+  {
+    "num": 35,
+    "region": "Africa",
+    "kicker": "politics",
+    "headline": "Parliament passes a corruption bill",
+    "fact": "creates a new oversight body",
+    "icon": "parliament",
+    "source": "Reuters"
+  },
+  {
+    "num": 36,
+    "region": "Americas",
+    "kicker": "energy",
+    "headline": "A grid operator adds battery storage",
+    "fact": "2.4 GWh of capacity online",
+    "icon": "chart",
+    "source": "Bloomberg"
+  },
+  {
+    "num": 37,
+    "region": "Europe",
+    "kicker": "markets",
+    "headline": "A rail merger clears a review",
+    "fact": "deal valued at 14bn euro",
+    "icon": "scales",
+    "source": "Reuters"
+  },
+  {
+    "num": 38,
+    "region": "Africa",
+    "kicker": "trade",
+    "headline": "Neighbours sign a border trade pact",
+    "fact": "tariffs end on 60 goods",
+    "icon": "ship",
+    "source": "Reuters"
+  },
+  {
+    "num": 39,
+    "region": "Asia",
+    "kicker": "climate",
+    "headline": "A city rolls out a flood-warning app",
+    "fact": "covers 9m residents",
+    "icon": "globe",
+    "source": "AP"
+  },
+  {
+    "num": 40,
+    "region": "Oceania",
+    "kicker": "law",
+    "headline": "A court sets a land-rights date",
+    "fact": "case runs 14 years",
+    "icon": "scales",
+    "source": "AFP"
+  }
 ]
