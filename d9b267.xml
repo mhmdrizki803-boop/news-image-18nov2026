@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://purl.org/rss/1.0/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sy="http://purl.org/rss/modules/syndication/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dwsyn="http://rss.dw.com/syndication/dwsyn/">
+ <channel rdf:about="https://rss.dw.com/syndication/feeds/rss-en-world.4025.rdf">
+  <description>World | Deutsche Welle</description>
+  <link>https://www.dw.com/english/?maca=en-rss-en-world-4025-rdf</link>
+  <title>World | Deutsche Welle</title>
+  <sy:updatePeriod>hourly</sy:updatePeriod>
+  <sy:updateFequency>4</sy:updateFequency>
+  <sy:updateBase>2002-05-01T00:00:00Z</sy:updateBase>
+  <dc:date>2026-11-18T05:31:12Z</dc:date>
+  <image rdf:resource="https://rss.dw.com/images/DW-L-RGB_whitebg.png"/>
+  <items>
+   <rdf:Seq>
+    <rdf:li rdf:resource="https://www.dw.com/en/hashim-thaci-s-second-conviction-in-the-hague-reignites-debate-in-kosovo-about-justice-and-the-kosovo-specialist-chambers/a-79975227?maca=en-rss-en-world-4025-rdf"/>
+    <rdf:li rdf:resource="https://www.dw.com/en/eu-asean-pursue-deeper-trade-ties-but-hurdles-remain-as-businesses-struggle-with-informal-barriers/a-79971350?maca=en-rss-en-world-4025-rdf"/>
+    <rdf:li rdf:resource="https://www.dw.com/en/saudi-arabia-rights-groups-raise-alarm-over-rising-number-of-executions/a-79970773?maca=en-rss-en-world-4025-rdf"/>
+    <rdf:li rdf:resource="https://www.dw.com/en/iran-s-growing-exodus-of-young-talent/a-79960368?maca=en-rss-en-world-4025-rdf"/>
+    <rdf:li rdf:resource="https://www.dw.com/en/back-to-1997-russia-wants-nato-to-roll-back-its-eastern-expansion/a-79970289?maca=en-rss-en-world-4025-rdf"/>
+    <rdf:li rdf:resource="https://www.dw.com/en/rights-court-rules-turkey-must-release-jailed-lawmaker-atalay/a-79972462?maca=en-rss-en-world-4025-rdf"/>
+    <rdf:li rdf:resource="https://www.dw.com/en/fresh-clashes-at-the-eritrean-border-is-ethiopia-sliding-into-a-regional-war/a-79970353?maca=en-rss-en-world-4025-rdf"/>
+    <rdf:li rdf:resource="https://www.dw.com/en/nvidia-forms-national-security-committee-after-huang-affair/a-79970447?maca=en-rss-en-world-4025-rdf"/>
+    <rdf:li rdf:resource="https://www.dw.com/en/iran-dismisses-report-of-alleged-dirty-bomb-attack-on-washington/a-79970741?maca=en-rss-en-world-4025-rdf"/>
+    <rdf:li rdf:resource="https://www.dw.com/en/apec-summit-what-trump-xi-and-putin-want/a-79970462?maca=en-rss-en-world-4025-rdf"/>
+    <rdf:li rdf:resource="https://www.dw.com/en/guinea-jails-200-in-wildcat-gold-mining-crackdown/a-79968808?maca=en-rss-en-world-4025-rdf"/>
+    <rdf:li rdf:resource="https://www.dw.com/en/students-list-candidates-take-seats-as-serbian-parliament-opens/a-79969166?maca=en-rss-en-world-4025-rdf"/>
+    <rdf:li rdf:resource="https://www.dw.com/en/nvidia-scandal-china-s-chips-dilemma-us-rivalry-shape-ai-race/a-79961766?maca=en-rss-en-world-4025-rdf"/>
+   </rdf:Seq>
+  </items>
+ </channel>
+ <image rdf:about="https://rss.dw.com/images/DW-L-RGB_whitebg.png">
+  <url>https://rss.dw.com/images/DW-L-RGB_whitebg.png</url>
+  <link>https://www.dw.com/english/?maca=en-rss-en-world-4025-rdf</link>
+  <title>DW</title>
+  <description>News, Analysis and Service from Germany and Europe - in 30 Languages</description>
+ </image>
+ <item rdf:about="https://www.dw.com/en/hashim-thaci-s-second-conviction-in-the-hague-reignites-debate-in-kosovo-about-justice-and-the-kosovo-specialist-chambers/a-79975227?maca=en-rss-en-world-4025-rdf">
+  <title>Hashim Thaci&apos;s second conviction in The Hague reignites debate in Kosovo about justice and the Kosovo Specialist Chambers</title>
+  <link>https://www.dw.com/en/hashim-thaci-s-second-conviction-in-the-hague-reignites-debate-in-kosovo-about-justice-and-the-kosovo-specialist-chambers/a-79975227?maca=en-rss-en-world-4025-rdf</link>
+  <description>Former President Hashim Thaci has been convicted of trying to influence witnesses in his war crimes trial. The conviction has reignited debate in Kosovo about the Kosovo Specialist Chambers, the court that convicted him.</description>
+  <dc:date>2026-11-17T20:40:00Z</dc:date>
+  <dc:subject>World</dc:subject>
+  <dc:language>en</dc:language>
+  <dwsyn:contentID>79975227</dwsyn:contentID>
+ </item>
+ <item rdf:about="https://www.dw.com/en/eu-asean-pursue-deeper-trade-ties-but-hurdles-remain-as-businesses-struggle-with-informal-barriers/a-79971350?maca=en-rss-en-world-4025-rdf">
+  <title>EU, ASEAN pursue deeper trade ties, but hurdles remain as businesses struggle with informal barriers</title>
+  <link>https://www.dw.com/en/eu-asean-pursue-deeper-trade-ties-but-hurdles-remain-as-businesses-struggle-with-informal-barriers/a-79971350?maca=en-rss-en-world-4025-rdf</link>
+  <description>2027 could be a landmark year for EU–Southeast Asia trade, with several deals nearing completion. But the harder task will be to ensure that businesses actually use them.</description>
+  <dc:date>2026-11-17T18:39:00Z</dc:date>
+  <dc:subject>World</dc:subject>
+  <dc:language>en</dc:language>
+  <dwsyn:contentID>79971350</dwsyn:contentID>
+ </item>
+ <item rdf:about="https://www.dw.com/en/saudi-arabia-rights-groups-raise-alarm-over-rising-number-of-executions/a-79970773?maca=en-rss-en-world-4025-rdf">
+  <title>Saudi Arabia: Rights groups raise alarm over rising number of executions</title>
+  <link>https://www.dw.com/en/saudi-arabia-rights-groups-raise-alarm-over-rising-number-of-executions/a-79970773?maca=en-rss-en-world-4025-rdf</link>
+  <description>Amid the war in Iran, Saudi Arabia&apos;s human rights situation remains bleak, with at least 211 executions, corporal punishment and an intensifying crackdown on critics. Is the regional conflict driving domestic repression?</description>
+  <dc:date>2026-11-17T17:02:00Z</dc:date>
+  <dc:subject>World</dc:subject>
+  <dc:language>en</dc:language>
+  <dwsyn:contentID>79970773</dwsyn:contentID>
+ </item>
+ <item rdf:about="https://www.dw.com/en/iran-s-growing-exodus-of-young-talent/a-79960368?maca=en-rss-en-world-4025-rdf">
+  <title>Iran&apos;s growing exodus of young talent</title>
+  <link>https://www.dw.com/en/iran-s-growing-exodus-of-young-talent/a-79960368?maca=en-rss-en-world-4025-rdf</link>
+  <description>Conflict and uncertainty are driving more and more educated young Iranians to consider leaving the country.</description>
+  <dc:date>2026-11-16T16:08:00Z</dc:date>
+  <dc:subject>World</dc:subject>
+  <dc:language>en</dc:language>
+  <dwsyn:contentID>79960368</dwsyn:contentID>
+ </item>
+ <item rdf:about="https://www.dw.com/en/back-to-1997-russia-wants-nato-to-roll-back-its-eastern-expansion/a-79970289?maca=en-rss-en-world-4025-rdf">
+  <title>Back to 1997: Russia wants NATO to roll back its eastern expansion</title>
+  <link>https://www.dw.com/en/back-to-1997-russia-wants-nato-to-roll-back-its-eastern-expansion/a-79970289?maca=en-rss-en-world-4025-rdf</link>
+  <description>The Kremlin is reportedly calling on NATO to withdraw from large parts of Eastern Europe. What this would mean for the security of millions of Europeans — and what lies behind Russia&apos;s plan.</description>
+  <dc:date>2026-11-17T16:20:00Z</dc:date>
+  <dc:subject>World</dc:subject>
+  <dc:language>en</dc:language>
+  <dwsyn:contentID>79970289</dwsyn:contentID>
+ </item>
+ <item rdf:about="https://www.dw.com/en/rights-court-rules-turkey-must-release-jailed-lawmaker-atalay/a-79972462?maca=en-rss-en-world-4025-rdf">
+  <title>Rights court rules Turkey must release jailed lawmaker Atalay</title>
+  <link>https://www.dw.com/en/rights-court-rules-turkey-must-release-jailed-lawmaker-atalay/a-79972462?maca=en-rss-en-world-4025-rdf</link>
+  <description>The European Court of Human Rights has called for the release of imprisoned elected lawmaker Can Atalay. Atalay has been in prison for almost five years despite rulings from the Turkish Constitutional Court.</description>
+  <dc:date>2026-11-17T15:47:00Z</dc:date>
+  <dc:subject>News</dc:subject>
+  <dc:language>en</dc:language>
+  <dwsyn:contentID>79972462</dwsyn:contentID>
+ </item>
+ <item rdf:about="https://www.dw.com/en/fresh-clashes-at-the-eritrean-border-is-ethiopia-sliding-into-a-regional-war/a-79970353?maca=en-rss-en-world-4025-rdf">
+  <title>Fresh clashes at the Eritrean border — is Ethiopia sliding into a regional war?</title>
+  <link>https://www.dw.com/en/fresh-clashes-at-the-eritrean-border-is-ethiopia-sliding-into-a-regional-war/a-79970353?maca=en-rss-en-world-4025-rdf</link>
+  <description>As Ethiopian troops push Tigrayan forces toward the Eritrean border, fears of a new regional war are growing. With tensions rising between Ethiopia, Eritrea and Sudan, the Horn of Africa faces uncertain times ahead.</description>
+  <dc:date>2026-11-17T15:43:00Z</dc:date>
+  <dc:subject>World</dc:subject>
+  <dc:language>en</dc:language>
+  <dwsyn:contentID>79970353</dwsyn:contentID>
+ </item>
+ <item rdf:about="https://www.dw.com/en/nvidia-forms-national-security-committee-after-huang-affair/a-79970447?maca=en-rss-en-world-4025-rdf">
+  <title>Nvidia forms national security committee after Huang affair</title>
+  <link>https://www.dw.com/en/nvidia-forms-national-security-committee-after-huang-affair/a-79970447?maca=en-rss-en-world-4025-rdf</link>
+  <description>Nvidia has created a board-level committee for national security and export control. This follows the resignation of CEO Jensen Huang over extramarital affairs, allegedly including one with a Chinese intelligence asset.</description>
+  <dc:date>2026-11-17T14:53:00Z</dc:date>
+  <dc:subject>News</dc:subject>
+  <dc:language>en</dc:language>
+  <dwsyn:contentID>79970447</dwsyn:contentID>
+ </item>
+ <item rdf:about="https://www.dw.com/en/iran-dismisses-report-of-alleged-dirty-bomb-attack-on-washington/a-79970741?maca=en-rss-en-world-4025-rdf">
+  <title>Iran dismisses report of alleged &apos;dirty bomb&apos; attack on Washington</title>
+  <link>https://www.dw.com/en/iran-dismisses-report-of-alleged-dirty-bomb-attack-on-washington/a-79970741?maca=en-rss-en-world-4025-rdf</link>
+  <description>Iran has said CNN&apos;s claim that Tehran would attack Washington with a &quot;dirty bomb&quot; was an attempt to manufacture further legitimacy to continue the war. Trump has said his administration takes the claim &quot;very seriously.&quot;</description>
+  <dc:date>2026-11-17T14:39:00Z</dc:date>
+  <dc:subject>News</dc:subject>
+  <dc:language>en</dc:language>
+  <dwsyn:contentID>79970741</dwsyn:contentID>
+ </item>
+ <item rdf:about="https://www.dw.com/en/apec-summit-what-trump-xi-and-putin-want/a-79970462?maca=en-rss-en-world-4025-rdf">
+  <title>APEC summit: What Trump, Xi and Putin want</title>
+  <link>https://www.dw.com/en/apec-summit-what-trump-xi-and-putin-want/a-79970462?maca=en-rss-en-world-4025-rdf</link>
+  <description>Trump, Xi and Putin will hold their first trilateral meeting on the sidelines of APEC. With different priorities on trade, Ukraine, Iran and arms control, what does each leader hope to gain?</description>
+  <dc:date>2026-11-17T14:25:00Z</dc:date>
+  <dc:subject>World</dc:subject>
+  <dc:language>en</dc:language>
+  <dwsyn:contentID>79970462</dwsyn:contentID>
+ </item>
+ <item rdf:about="https://www.dw.com/en/guinea-jails-200-in-wildcat-gold-mining-crackdown/a-79968808?maca=en-rss-en-world-4025-rdf">
+  <title>Guinea jails 200 in wildcat gold mining crackdown</title>
+  <link>https://www.dw.com/en/guinea-jails-200-in-wildcat-gold-mining-crackdown/a-79968808?maca=en-rss-en-world-4025-rdf</link>
+  <description>A Conakry court has jailed 22 former local officials from the gold-rich northeastern Siguiri region, as well as 200 people accused of illegal mining. It&apos;s part of a wider crackdown that sent thousands fleeing into Mali.</description>
+  <dc:date>2026-11-17T12:30:00Z</dc:date>
+  <dc:subject>News</dc:subject>
+  <dc:language>en</dc:language>
+  <dwsyn:contentID>79968808</dwsyn:contentID>
+ </item>
+ <item rdf:about="https://www.dw.com/en/students-list-candidates-take-seats-as-serbian-parliament-opens/a-79969166?maca=en-rss-en-world-4025-rdf">
+  <title>Students&apos; List candidates take seats as Serbian parliament opens</title>
+  <link>https://www.dw.com/en/students-list-candidates-take-seats-as-serbian-parliament-opens/a-79969166?maca=en-rss-en-world-4025-rdf</link>
+  <description>Serbia&apos;s Student List&apos;s candidates have taken their oaths in the inaugural parliament session. As the new majority, they have 90 days to form a government.</description>
+  <dc:date>2026-11-17T12:09:00Z</dc:date>
+  <dc:subject>News</dc:subject>
+  <dc:language>en</dc:language>
+  <dwsyn:contentID>79969166</dwsyn:contentID>
+ </item>
+ <item rdf:about="https://www.dw.com/en/nvidia-scandal-china-s-chips-dilemma-us-rivalry-shape-ai-race/a-79961766?maca=en-rss-en-world-4025-rdf">
+  <title>Nvidia scandal: China&apos;s chips dilemma, US rivalry shape AI race</title>
+  <link>https://www.dw.com/en/nvidia-scandal-china-s-chips-dilemma-us-rivalry-shape-ai-race/a-79961766?maca=en-rss-en-world-4025-rdf</link>
+  <description>The controversy over Nvidia&apos;s former CEO Jensen Huang and an alleged affair with a suspected spy has exposed the intensifying AI rivalry between the US and China.</description>
+  <dc:date>2026-11-16T16:32:00Z</dc:date>
+  <dc:subject>World</dc:subject>
+  <dc:language>en</dc:language>
+  <dwsyn:contentID>79961766</dwsyn:contentID>
+ </item>
+</rdf:RDF>

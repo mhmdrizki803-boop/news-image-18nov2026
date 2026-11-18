@@ -1,0 +1,24 @@
+[
+  {
+    "kicker": "climate finance",
+    "title": "Loss-and-damage fund pays out its first $40bn after pledges clear",
+    "standfirst": "The UN-backed facility approved its maiden disbursement after 41 donor states settled arrears. Coastal ministries in eight countries draw the first grants next month.",
+    "region": "Global",
+    "source": "Reuters"
+  },
+  {"kicker": "monetary policy", "title": "Federal Reserve holds rates for a fourth straight meeting", "region": "Americas", "source": "AP"},
+  {"kicker": "energy", "title": "OPEC+ keeps output steady for a third month as forecasts split", "region": "Middle East", "source": "Reuters"},
+  {"kicker": "energy", "title": "Record solar auction clears in Rajasthan at a new low tariff", "region": "Asia", "source": "Reuters"},
+  {"kicker": "space", "title": "European Space Agency clears a robotic mission to a Martian moon", "region": "Europe", "source": "AFP"},
+  {"kicker": "health", "title": "Cholera cases fall 22% across the Sahel, Africa CDC reports", "region": "Africa", "source": "AFP"},
+  {"kicker": "politics", "title": "Sri Lanka's parliament passes a long-delayed anti-corruption bill", "region": "Asia", "source": "AP"},
+  {"kicker": "disaster", "title": "Magnitude 6.1 quake strikes central Chile, no deaths reported", "region": "Americas", "source": "Reuters"},
+  {"kicker": "economy", "title": "Eurozone inflation slows to 1.9%, its lowest in three years", "region": "Europe", "source": "BBC"},
+  {"kicker": "rugby", "title": "New Zealand seals the series with a late try in Wellington", "region": "Oceania", "source": "AP"},
+  {"kicker": "space", "title": "Japan launches a weather satellite from Tanegashima", "region": "Asia", "source": "AFP"},
+  {"kicker": "health", "title": "WHO flags a measles resurgence in three eastern European states", "region": "Europe", "source": "BBC"},
+  {"kicker": "trade", "title": "Kenya and Somalia sign a border trade pact after long talks", "region": "Africa", "source": "Reuters"},
+  {"kicker": "climate", "title": "Brazil reports a 30% fall in Amazon deforestation this year", "region": "Americas", "source": "AFP"},
+  {"kicker": "economy", "title": "Indonesia's central bank cuts its key rate to steady the rupiah", "region": "Asia", "source": "Reuters"},
+  {"kicker": "science", "title": "A telescope array in the Karoo begins its first full sky survey", "region": "Africa", "source": "AP"}
+]

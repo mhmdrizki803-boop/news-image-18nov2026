@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <atom:link href="https://news-api.cf.sky.com/feeds/rss/world.xml" rel="self" type="application/rss+xml"/>
+    <title>World News - Breaking international news and headlines | Sky News</title>
+    <link>https://news.sky.com/world</link>
+    <image>
+      <title>World News - Breaking international news and headlines | Sky News</title>
+      <url>https://e3.365dm.com/skynews/logo.png</url>
+      <link>https://news.sky.com/world</link>
+    </image>
+    <description>The latest international news from Sky, featuring top stories from around the world and breaking news, as it happens.</description>
+    <language>en-GB</language>
+    <copyright>Copyright 2026, Sky UK. All Rights Reserved.</copyright>
+    <lastBuildDate>Tue, 17 Nov 2026 21:08:00 +0000</lastBuildDate>
+    <category>Sky News</category>
+    <ttl>1</ttl>
+    <item>
+      <title>Police in Philippines pursue three charges against Thomas Markle Sr</title>
+      <link>https://news.sky.com/story/police-in-philippines-pursue-three-charges-against-thomas-markle-sr-over-child-sex-abuse-images-13613346</link>
+      <description>Filipino police are pursuing three charges against Thomas Markle Sr relating to child sexual abuse images, Sky News understands.</description>
+      <pubDate>Tue, 17 Nov 2026 17:34:00 +0000</pubDate>
+      <guid>https://news.sky.com/story/police-in-philippines-pursue-three-charges-against-thomas-markle-sr-over-child-sex-abuse-images-13613346</guid>
+      <enclosure url="https://e3.365dm.com/26/11/1920x1080/skynews-thomas-markle-mugshot_7403623.jpg?20261111090436" length="0" type="image/jpeg"/>
+      <media:description type="html">Thomas Markle. Pic: Pinellas County Sheriff&apos;s Office</media:description>
+      <media:thumbnail url="https://e3.365dm.com/26/11/1920x1080/skynews-thomas-markle-mugshot_7403623.jpg?20261111090436" width="1920" height="1080"/>
+      <media:content type="image/jpeg" url="https://e3.365dm.com/26/11/1920x1080/skynews-thomas-markle-mugshot_7403623.jpg?20261111090436"/>
+    </item>
+    <item>
+      <title>Prague train crash leaves 46 people injured</title>
+      <link>https://news.sky.com/story/prague-train-crash-leaves-46-people-injured-13613217</link>
+      <description>Two trains have collided into each other near the main railway station in Prague, injuring 46 people.</description>
+      <pubDate>Tue, 17 Nov 2026 12:46:00 +0000</pubDate>
+      <guid>https://news.sky.com/story/prague-train-crash-leaves-46-people-injured-13613217</guid>
+      <enclosure url="https://e3.365dm.com/26/11/1920x1080/skynews-prague-train_7408693.jpg?20261117133824" length="0" type="image/jpeg"/>
+      <media:description type="html">The scene of the crash near Prague&apos;s main train station. Pic: AP</media:description>
+      <media:thumbnail url="https://e3.365dm.com/26/11/1920x1080/skynews-prague-train_7408693.jpg?20261117133824" width="1920" height="1080"/>
+      <media:content type="image/jpeg" url="https://e3.365dm.com/26/11/1920x1080/skynews-prague-train_7408693.jpg?20261117133824"/>
+    </item>
+    <item>
+      <title>UK sanctions eight firms building Israeli settlements in the West Bank</title>
+      <link>https://news.sky.com/story/uk-sanctions-eight-firms-building-israeli-settlements-in-the-west-bank-13612666</link>
+      <description>The UK has sanctioned eight firms building Israeli settlements in the West Bank.</description>
+      <pubDate>Tue, 17 Nov 2026 06:12:00 +0000</pubDate>
+      <guid>https://news.sky.com/story/uk-sanctions-eight-firms-building-israeli-settlements-in-the-west-bank-13612666</guid>
+      <enclosure url="https://e3.365dm.com/26/11/1920x1080/skynews-west-bank-israeli_7408558.jpg?20261117114538" length="0" type="image/jpeg"/>
+      <media:description type="html">An Israeli settlement in the West Bank. Pic: Reuters</media:description>
+      <media:thumbnail url="https://e3.365dm.com/26/11/1920x1080/skynews-west-bank-israeli_7408558.jpg?20261117114538" width="1920" height="1080"/>
+      <media:content type="image/jpeg" url="https://e3.365dm.com/26/11/1920x1080/skynews-west-bank-israeli_7408558.jpg?20261117114538"/>
+    </item>
+    <item>
+      <title>William and Kate host glittering Earthshot Prize ceremony in Mumbai</title>
+      <link>https://news.sky.com/story/william-and-kate-host-glittering-earthshot-prize-ceremony-in-mumbai-13613397</link>
+      <description>The Prince and Princess of Wales have hosted a star-studded event in Mumbai to celebrate the winners of the Earthshot Prize.</description>
+      <pubDate>Tue, 17 Nov 2026 21:08:00 +0000</pubDate>
+      <guid>https://news.sky.com/story/william-and-kate-host-glittering-earthshot-prize-ceremony-in-mumbai-13613397</guid>
+      <enclosure url="https://e3.365dm.com/26/11/1920x1080/skynews-india-mumbai-earthshot_7408760.jpg?20261117143813" length="0" type="image/jpeg"/>
+      <media:description type="html">The couple wore traditional Indian dress. Pic: Reuters</media:description>
+      <media:thumbnail url="https://e3.365dm.com/26/11/1920x1080/skynews-india-mumbai-earthshot_7408760.jpg?20261117143813" width="1920" height="1080"/>
+      <media:content type="image/jpeg" url="https://e3.365dm.com/26/11/1920x1080/skynews-india-mumbai-earthshot_7408760.jpg?20261117143813"/>
+    </item>
+    <item>
+      <title>Three Melbourne Cup trophies worth £500k each stolen</title>
+      <link>https://news.sky.com/story/police-searching-for-three-stolen-melbourne-cup-trophies-worth-500k-each-13613066</link>
+      <description>Police are searching for three Melbourne Cup trophies collectively worth more than £1.5m after they were stolen from a display cabinet at a racecourse in Melbourne. </description>
+      <pubDate>Tue, 17 Nov 2026 04:00:00 +0000</pubDate>
+      <guid>https://news.sky.com/story/police-searching-for-three-stolen-melbourne-cup-trophies-worth-500k-each-13613066</guid>
+      <enclosure url="https://e3.365dm.com/26/11/1920x1080/skynews-melbourne-cup-makybe-diva_7408286.jpg?20261117045039" length="0" type="image/jpeg"/>
+      <media:description type="html">Makybe Diva, known as &apos;the people&apos;s horse&apos;, with the three Melbourne Cups in 2005. File pic: AP</media:description>
+      <media:thumbnail url="https://e3.365dm.com/26/11/1920x1080/skynews-melbourne-cup-makybe-diva_7408286.jpg?20261117045039" width="1920" height="1080"/>
+      <media:content type="image/jpeg" url="https://e3.365dm.com/26/11/1920x1080/skynews-melbourne-cup-makybe-diva_7408286.jpg?20261117045039"/>
+    </item>
+  </channel>
+</rss>
