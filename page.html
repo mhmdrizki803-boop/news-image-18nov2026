@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>THE WORLD TODAY — Wednesday 18 November 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1024px; height: 1024px; }
+  body {
+    background: #f4f0e6;
+    color: #17150f;
+    font-family: Georgia, 'Times New Roman', 'DejaVu Serif', serif;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 18px 12px;
+  }
+  /* ---------- masthead ---------- */
+  .masthead { flex: 0 0 auto; border-bottom: 3px double #17150f; padding-bottom: 5px; }
+  .brand {
+    text-align: center;
+    font-family: 'DejaVu Serif', Georgia, serif;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.0;
+    letter-spacing: 6px;
+  }
+  .date {
+    text-align: center;
+    font-family: 'DejaVu Serif', Georgia, serif;
+    font-weight: 700;
+    font-size: 49px;
+    line-height: 1.06;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    margin-top: 1px;
+  }
+  .strap {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'DejaVu Sans', Arial, sans-serif;
+    font-size: 14px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: #3a352b;
+    border-top: 1px solid #b9b2a2;
+    padding-top: 4px;
+    margin-top: 5px;
+  }
+  .strap .accent { color: #b3261e; font-weight: 700; }
+
+  /* ---------- top: lead + map ---------- */
+  .top { flex: 0 0 auto; display: flex; gap: 18px; height: 258px; padding: 10px 0; border-bottom: 2px solid #17150f; }
+  .lead { flex: 1 1 auto; overflow: hidden; }
+  .lead .lk {
+    display: inline-block;
+    background: #b3261e;
+    color: #fff;
+    font-family: 'DejaVu Sans', Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    margin-bottom: 8px;
+  }
+  .lead h1 { font-size: 36px; line-height: 1.05; letter-spacing: -0.4px; margin-bottom: 8px; }
+  .lead .standfirst { font-size: 16px; line-height: 1.32; color: #3a352b; font-style: italic; }
+
+  .mapbox { flex: 0 0 372px; border-left: 1px solid #b9b2a2; padding-left: 16px; display: flex; flex-direction: column; }
+  .mapcap {
+    font-family: 'DejaVu Sans', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: #b3261e;
+    margin-bottom: 5px;
+  }
+  .mapbox svg { width: 356px; height: 196px; background: #eae4d5; border: 1px solid #cfc7b5; }
+  .land { fill: #cfd6c9; stroke: #6b7566; stroke-width: 1; stroke-dasharray: 2.4 2.4; stroke-linejoin: round; }
+  .dot { fill: #b3261e; stroke: #fff; stroke-width: 1.3; }
+  .dotlbl {
+    font-family: 'DejaVu Sans', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    fill: #1c2b21;
+    paint-order: stroke;
+    stroke: #eae4d5;
+    stroke-width: 3px;
+    stroke-linejoin: round;
+  }
+
+  /* ---------- briefs: three dense columns ---------- */
+  .columns { flex: 1 1 auto; display: flex; gap: 14px; padding-top: 8px; min-height: 0; overflow: hidden; }
+  .col { flex: 1 1 0; min-width: 0; border-right: 1px solid #b9b2a2; padding-right: 12px; }
+  .col:last-child { border-right: none; padding-right: 0; }
+  .item { padding-bottom: 4px; margin-bottom: 4px; border-bottom: 1px dotted #c3bba8; }
+  .item:last-child { border-bottom: none; }
+  .item .r1 { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1px; }
+  .item .k {
+    color: #b3261e;
+    font-family: 'DejaVu Sans', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+  .item .rg {
+    font-family: 'DejaVu Sans', Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #6b6455;
+    white-space: nowrap;
+    padding-left: 6px;
+  }
+  .item .t { display: block; font-size: 13.5px; line-height: 1.17; font-weight: 600; }
+  .item .s {
+    font-family: 'DejaVu Sans', Arial, sans-serif;
+    font-size: 10.5px;
+    font-weight: 400;
+    color: #6b6455;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  #diag { display: none; }
+</style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="brand">THE WORLD TODAY</div>
+    <div class="date">WEDNESDAY 18 NOVEMBER 2026</div>
+    <div class="strap">
+      <span class="accent">32 stories &middot; six continents</span>
+      <span>independent world edition</span>
+    </div>
+  </header>
+
+  <section class="top">
+    <div class="lead">
+      <span class="lk">climate finance</span>
+      <h1>Loss-and-damage fund pays out its first $40bn after pledges clear</h1>
+      <p class="standfirst">The UN-backed facility approved its maiden disbursement after 41 donor states settled arrears. Coastal ministries in eight countries draw the first grants next month.</p>
+    </div>
+    <div class="mapbox">
+      <div class="mapcap">World &middot; stories by region</div>
+      <svg viewBox="0 0 330 180" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Dotted world map with a marker for each region covered">
+        <path class="land" d="M11,25 L36.7,20 L77.9,18 L96.3,30 L114.6,40 L105.4,45 L91.7,65 L76.1,74 L68.8,70 L50.4,50 L45.8,35 Z"/>
+        <path class="land" d="M123.8,30 L146.7,20 L142,8 L110,8 L111.8,22 Z"/>
+        <path class="land" d="M91.7,80 L110,80 L132.9,95 L130.2,112 L114.6,125 L100.8,145 L96.3,135 L99,110 L91.7,90 Z"/>
+        <path class="land" d="M155.8,54 L165,46 L174.2,45 L190.7,45 L201.7,42 L192.5,30 L190.7,20 L174.2,32 L165,40 Z"/>
+        <path class="land" d="M201.7,42 L220,35 L247.5,35 L275,40 L293.3,40 L295,45 L288.8,70 L275,80 L261.3,80 L256.7,90 L238.3,82 L220,65 L206.3,78 L197,58 Z"/>
+        <path class="land" d="M149.4,75 L150.3,85 L173.3,86 L174.2,92 L176,108 L183.3,125 L194.3,120 L204.5,102 L211.8,78 L197,58 L174.2,53 L159.5,54 Z"/>
+        <path class="land" d="M268.6,112 L284.2,102 L295,101 L305.1,118 L298.6,128 L284.2,122 L270.4,124 Z"/>
+        <circle cx="78" cy="58" r="4" class="dot"/>
+        <text x="84.5" y="61.5" class="dotlbl" text-anchor="start">Americas</text>
+        <circle cx="183" cy="45" r="4" class="dot"/>
+        <text x="189.5" y="48.5" class="dotlbl" text-anchor="start">Europe</text>
+        <circle cx="180" cy="102" r="4" class="dot"/>
+        <text x="186.5" y="105.5" class="dotlbl" text-anchor="start">Africa</text>
+        <circle cx="207" cy="81" r="4" class="dot"/>
+        <text x="213.5" y="84.5" class="dotlbl" text-anchor="start">Middle East</text>
+        <circle cx="258" cy="50" r="4" class="dot"/>
+        <text x="264.5" y="53.5" class="dotlbl" text-anchor="start">Asia</text>
+        <circle cx="287" cy="122" r="4" class="dot"/>
+        <text x="280.5" y="125.5" class="dotlbl" text-anchor="end">Oceania</text>
+      </svg>
+    </div>
+  </section>
+
+  <section class="columns">
+    <div class="col" data-col="1">
+      <p class="item">
+        <span class="r1"><span class="k">energy</span><span class="rg">Asia</span></span>
+        <span class="t">Rajasthan solar auction hits a record low tariff <span class="s">Reuters</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">politics</span><span class="rg">Asia</span></span>
+        <span class="t">Sri Lanka passes a delayed anti-corruption bill <span class="s">AP</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">space</span><span class="rg">Europe</span></span>
+        <span class="t">ESA clears a robotic mission to a Martian moon <span class="s">AFP</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">economy</span><span class="rg">Europe</span></span>
+        <span class="t">Eurozone inflation slows to 1.9%, a three-year low <span class="s">BBC</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">monetary policy</span><span class="rg">Americas</span></span>
+        <span class="t">Fed holds rates for a fourth straight meeting <span class="s">AP</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">disaster</span><span class="rg">Americas</span></span>
+        <span class="t">Magnitude 6.1 quake strikes central Chile <span class="s">Reuters</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">health</span><span class="rg">Africa</span></span>
+        <span class="t">Cholera cases fall 22% across the Sahel <span class="s">AFP</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">trade</span><span class="rg">Africa</span></span>
+        <span class="t">Kenya and Somalia sign a border trade pact <span class="s">Reuters</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">energy</span><span class="rg">Middle East</span></span>
+        <span class="t">OPEC+ keeps output steady for a third month <span class="s">Reuters</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">rugby</span><span class="rg">Oceania</span></span>
+        <span class="t">New Zealand seals the series with a late try <span class="s">AP</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">climate</span><span class="rg">Oceania</span></span>
+        <span class="t">Australia logs a decade-high winter coral cover <span class="s">AFP</span></span>
+      </p>
+    </div>
+    <div class="col" data-col="2">
+      <p class="item">
+        <span class="r1"><span class="k">space</span><span class="rg">Asia</span></span>
+        <span class="t">Japan launches a weather satellite from Tanegashima <span class="s">AFP</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">tech</span><span class="rg">Asia</span></span>
+        <span class="t">India's payments network crosses 20bn monthly <span class="s">Reuters</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">health</span><span class="rg">Europe</span></span>
+        <span class="t">WHO flags a measles resurgence in three states <span class="s">BBC</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">law</span><span class="rg">Europe</span></span>
+        <span class="t">EU court backs a 1.2bn euro fine on a rail cartel <span class="s">Reuters</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">climate</span><span class="rg">Americas</span></span>
+        <span class="t">Brazil reports a 30% fall in Amazon deforestation <span class="s">AFP</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">science</span><span class="rg">Africa</span></span>
+        <span class="t">Karoo telescope array begins a full sky survey <span class="s">AP</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">energy</span><span class="rg">Africa</span></span>
+        <span class="t">Nigeria's grid adds 1.4GW as a dam unit starts <span class="s">Reuters</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">energy</span><span class="rg">Middle East</span></span>
+        <span class="t">Qatar signs a 20-year gas deal with an Asian buyer <span class="s">Reuters</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">markets</span><span class="rg">Middle East</span></span>
+        <span class="t">Saudi sovereign fund posts a record surplus <span class="s">Bloomberg</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">economy</span><span class="rg">Oceania</span></span>
+        <span class="t">New Zealand holds its rate at 3% as housing cools <span class="s">Reuters</span></span>
+      </p>
+    </div>
+    <div class="col" data-col="3">
+      <p class="item">
+        <span class="r1"><span class="k">economy</span><span class="rg">Asia</span></span>
+        <span class="t">Indonesia cuts its key rate to steady the rupiah <span class="s">Reuters</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">trade</span><span class="rg">Asia</span></span>
+        <span class="t">Vietnam's exports rise 9% as chip demand recovers <span class="s">AP</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">energy</span><span class="rg">Europe</span></span>
+        <span class="t">Norway clears a 2.1GW offshore wind link <span class="s">AFP</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">science</span><span class="rg">Americas</span></span>
+        <span class="t">Deep-sea survey off Patagonia logs 40 new species <span class="s">AFP</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">markets</span><span class="rg">Americas</span></span>
+        <span class="t">Canada's dollar slides as factory orders fall <span class="s">Reuters</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">economy</span><span class="rg">Africa</span></span>
+        <span class="t">Ghana's currency steadies as inflation eases to 12% <span class="s">Reuters</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">climate</span><span class="rg">Middle East</span></span>
+        <span class="t">A Gulf desalination plant starts on solar power <span class="s">AFP</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">law</span><span class="rg">Middle East</span></span>
+        <span class="t">Jordan advances a water-sharing arbitration bill <span class="s">AP</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">science</span><span class="rg">Oceania</span></span>
+        <span class="t">Fiji joins a Pacific seismic-warning network <span class="s">AP</span></span>
+      </p>
+      <p class="item">
+        <span class="r1"><span class="k">politics</span><span class="rg">Oceania</span></span>
+        <span class="t">Papua New Guinea sets a national census for the new year <span class="s">AFP</span></span>
+      </p>
+    </div>
+  </section>
+
+  <div id="diag"></div>
+  <script>
+    window.__diag = function () {
+      var d = document.getElementById('diag');
+      var out = { bodyScroll: document.body.scrollHeight, cols: [] };
+      document.querySelectorAll('.col').forEach(function (c) {
+        out.cols.push({ i: c.dataset.col, scroll: c.scrollHeight, client: c.clientHeight, items: c.querySelectorAll('.item').length });
+      });
+      var date = document.querySelector('.date');
+      var rng = document.createRange(); rng.selectNodeContents(date);
+      out.date = { textW: Math.round(rng.getBoundingClientRect().width), availW: 988, scrollW: date.scrollWidth, fontSize: getComputedStyle(date).fontSize };
+      out.columnsBox = Math.round(document.querySelector('.columns').getBoundingClientRect().height);
+      var last = document.querySelectorAll('.col')[2].querySelector('.item:last-child');
+      out.lastItemBottom = Math.round(last.getBoundingClientRect().bottom);
+      out.bodyBottom = 1024;
+      d.textContent = JSON.stringify(out);
+      return out;
+    };
+  </script>
+</body>
+</html>

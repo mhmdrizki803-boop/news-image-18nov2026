@@ -1,5 +1,5 @@
 // gen.mjs — build page.html (1024x1024 broadsheet front page) from news.json
-// One lead block + a dotted world map + two columns of short briefs. Legible at ~300px.
+// One lead block + a dotted world map + THREE dense columns of short briefs.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
@@ -11,8 +11,19 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 
 const lead = news[0];
 const briefs = news.slice(1);
-const HALF = Math.ceil(briefs.length / 2);
-const cols = [briefs.slice(0, HALF), briefs.slice(HALF)];
+
+// three balanced columns (~11 / ~10 / ~10)
+const COLS = 3;
+const n = briefs.length;
+const base = Math.floor(n / COLS);
+const rem = n % COLS;
+let idx = 0;
+const cols = [];
+for (let i = 0; i < COLS; i++) {
+  const size = base + (i < rem ? 1 : 0);
+  cols.push(briefs.slice(idx, idx + size));
+  idx += size;
+}
 
 const renderItem = (it) => `      <p class="item">
         <span class="r1"><span class="k">${esc(it.kicker)}</span><span class="rg">${esc(it.region)}</span></span>
@@ -53,15 +64,15 @@ const html = `<!DOCTYPE html>
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    padding: 14px 20px 14px;
+    padding: 12px 18px 12px;
   }
   /* ---------- masthead ---------- */
-  .masthead { flex: 0 0 auto; border-bottom: 3px double #17150f; padding-bottom: 6px; }
+  .masthead { flex: 0 0 auto; border-bottom: 3px double #17150f; padding-bottom: 5px; }
   .brand {
     text-align: center;
     font-family: 'DejaVu Serif', Georgia, serif;
     font-weight: 700;
-    font-size: 38px;
+    font-size: 36px;
     line-height: 1.0;
     letter-spacing: 6px;
   }
@@ -70,7 +81,7 @@ const html = `<!DOCTYPE html>
     font-family: 'DejaVu Serif', Georgia, serif;
     font-weight: 700;
     font-size: 49px;
-    line-height: 1.1;
+    line-height: 1.06;
     letter-spacing: 0.5px;
     white-space: nowrap;
     margin-top: 1px;
@@ -80,18 +91,18 @@ const html = `<!DOCTYPE html>
     justify-content: space-between;
     align-items: baseline;
     font-family: 'DejaVu Sans', Arial, sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     letter-spacing: 1.6px;
     text-transform: uppercase;
     color: #3a352b;
     border-top: 1px solid #b9b2a2;
-    padding-top: 5px;
-    margin-top: 6px;
+    padding-top: 4px;
+    margin-top: 5px;
   }
   .strap .accent { color: #b3261e; font-weight: 700; }
 
   /* ---------- top: lead + map ---------- */
-  .top { flex: 0 0 auto; display: flex; gap: 20px; height: 264px; padding: 11px 0; border-bottom: 2px solid #17150f; }
+  .top { flex: 0 0 auto; display: flex; gap: 18px; height: 258px; padding: 10px 0; border-bottom: 2px solid #17150f; }
   .lead { flex: 1 1 auto; overflow: hidden; }
   .lead .lk {
     display: inline-block;
@@ -103,10 +114,10 @@ const html = `<!DOCTYPE html>
     letter-spacing: 2px;
     text-transform: uppercase;
     padding: 3px 9px;
-    margin-bottom: 9px;
+    margin-bottom: 8px;
   }
-  .lead h1 { font-size: 37px; line-height: 1.05; letter-spacing: -0.4px; margin-bottom: 9px; }
-  .lead .standfirst { font-size: 16px; line-height: 1.34; color: #3a352b; font-style: italic; }
+  .lead h1 { font-size: 36px; line-height: 1.05; letter-spacing: -0.4px; margin-bottom: 8px; }
+  .lead .standfirst { font-size: 16px; line-height: 1.32; color: #3a352b; font-style: italic; }
 
   .mapbox { flex: 0 0 372px; border-left: 1px solid #b9b2a2; padding-left: 16px; display: flex; flex-direction: column; }
   .mapcap {
@@ -132,34 +143,34 @@ const html = `<!DOCTYPE html>
     stroke-linejoin: round;
   }
 
-  /* ---------- briefs ---------- */
-  .columns { flex: 1 1 auto; display: flex; gap: 24px; padding-top: 9px; min-height: 0; overflow: hidden; }
-  .col { flex: 1 1 0; min-width: 0; border-right: 1px solid #b9b2a2; padding-right: 20px; }
+  /* ---------- briefs: three dense columns ---------- */
+  .columns { flex: 1 1 auto; display: flex; gap: 14px; padding-top: 8px; min-height: 0; overflow: hidden; }
+  .col { flex: 1 1 0; min-width: 0; border-right: 1px solid #b9b2a2; padding-right: 12px; }
   .col:last-child { border-right: none; padding-right: 0; }
-  .item { padding-bottom: 6px; margin-bottom: 6px; border-bottom: 1px dotted #c3bba8; }
+  .item { padding-bottom: 4px; margin-bottom: 4px; border-bottom: 1px dotted #c3bba8; }
   .item:last-child { border-bottom: none; }
-  .item .r1 { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; }
+  .item .r1 { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1px; }
   .item .k {
     color: #b3261e;
     font-family: 'DejaVu Sans', Arial, sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
   }
   .item .rg {
     font-family: 'DejaVu Sans', Arial, sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.6px;
+    font-size: 11px;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
     color: #6b6455;
     white-space: nowrap;
-    padding-left: 8px;
+    padding-left: 6px;
   }
-  .item .t { display: block; font-size: 16.5px; line-height: 1.24; font-weight: 600; }
+  .item .t { display: block; font-size: 13.5px; line-height: 1.17; font-weight: 600; }
   .item .s {
     font-family: 'DejaVu Sans', Arial, sans-serif;
-    font-size: 12px;
+    font-size: 10.5px;
     font-weight: 400;
     color: #6b6455;
     letter-spacing: 0.6px;
@@ -174,7 +185,7 @@ const html = `<!DOCTYPE html>
     <div class="brand">THE WORLD TODAY</div>
     <div class="date">WEDNESDAY 18 NOVEMBER 2026</div>
     <div class="strap">
-      <span class="accent">16 stories &middot; six continents</span>
+      <span class="accent">${news.length} stories &middot; six continents</span>
       <span>independent world edition</span>
     </div>
   </header>
@@ -209,13 +220,15 @@ ${columnHtml}
       var d = document.getElementById('diag');
       var out = { bodyScroll: document.body.scrollHeight, cols: [] };
       document.querySelectorAll('.col').forEach(function (c) {
-        out.cols.push({ i: c.dataset.col, scroll: c.scrollHeight, client: c.clientHeight });
+        out.cols.push({ i: c.dataset.col, scroll: c.scrollHeight, client: c.clientHeight, items: c.querySelectorAll('.item').length });
       });
       var date = document.querySelector('.date');
-      out.date = { boxW: Math.round(date.getBoundingClientRect().width), scrollW: date.scrollWidth, fontSize: getComputedStyle(date).fontSize };
-      var li = document.querySelectorAll('.col')[1].querySelector('.item:last-child');
-      out.lastItemBottom = Math.round(li.getBoundingClientRect().bottom);
-      out.bodyBottom = Math.round(document.querySelector('.columns').getBoundingClientRect().bottom);
+      var rng = document.createRange(); rng.selectNodeContents(date);
+      out.date = { textW: Math.round(rng.getBoundingClientRect().width), availW: 988, scrollW: date.scrollWidth, fontSize: getComputedStyle(date).fontSize };
+      out.columnsBox = Math.round(document.querySelector('.columns').getBoundingClientRect().height);
+      var last = document.querySelectorAll('.col')[2].querySelector('.item:last-child');
+      out.lastItemBottom = Math.round(last.getBoundingClientRect().bottom);
+      out.bodyBottom = 1024;
       d.textContent = JSON.stringify(out);
       return out;
     };
@@ -225,4 +238,4 @@ ${columnHtml}
 `;
 
 writeFileSync(join(here, 'page.html'), html);
-console.log('wrote page.html', html.length, 'bytes;', news.length, 'stories; lead:', lead.title.slice(0, 40));
+console.log('wrote page.html', html.length, 'bytes;', news.length, 'stories;', briefs.length, 'briefs in', COLS, 'cols of', cols.map((c) => c.length).join('/'), '; lead:', lead.title.slice(0, 40));
