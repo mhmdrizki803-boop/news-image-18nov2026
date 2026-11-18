@@ -6,36 +6,33 @@
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   html, body { width:1024px; height:1024px; }
-  body { background:#f7f3ea; color:#1a1811; overflow:hidden; font-family:'DejaVu Sans', Arial, sans-serif; display:flex; flex-direction:column; padding:24px 30px 14px; }
-  .mast { text-align:center; font-family:'DejaVu Serif', Georgia, serif; font-weight:700; font-size:30px; letter-spacing:12px; }
-  .kicker { text-align:center; font-size:11px; letter-spacing:5px; color:#7a7362; margin-top:4px; }
-  .date { text-align:center; font-family:'DejaVu Serif', Georgia, serif; font-weight:700; font-size:42px; margin-top:6px; }
-  .hr { border:0; border-top:3px double #1a1811; margin-top:8px; }
-  .tally { text-align:center; font-size:13px; font-weight:700; letter-spacing:3px; color:#a8281f; margin-top:6px; }
-  .lead { display:flex; gap:14px; align-items:center; margin-top:12px; border:1px solid #dfd7c5; border-left:6px solid var(--lc); border-radius:6px; background:var(--lb); padding:10px 14px; }
-  .lead .gl { display:flex; flex:0 0 auto; color:var(--lc); }
-  .lead .badge { font-size:10.5px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:var(--lc); }
-  .lead h2 { font-family:'DejaVu Serif', Georgia, serif; font-size:23px; font-weight:700; line-height:1.1; margin-top:2px; }
-  .lead p { font-size:12.5px; color:#4c4638; margin-top:3px; }
-  .figs { display:flex; margin-top:12px; border-top:2px solid #1a1811; border-bottom:2px solid #1a1811; padding:6px 0; }
-  .fig { flex:1 1 0; text-align:center; }
-  .fig .v { font-family:'DejaVu Serif', Georgia, serif; font-size:34px; font-weight:700; line-height:1; letter-spacing:-0.5px; }
-  .fig .l { font-size:9.5px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:#7a7362; margin-top:3px; }
-  .band { flex:1 1 auto; display:flex; gap:16px; margin-top:12px; min-height:0; }
-  .cards { flex:1.65 1 0; display:grid; grid-template-columns:repeat(2,1fr); grid-template-rows:repeat(4,1fr); gap:10px; min-height:0; }
-  .card { border:1px solid #e2dac9; border-top:3px solid var(--cc); border-radius:5px; background:#fffdf8; padding:7px 10px; display:flex; flex-direction:column; overflow:hidden; }
-  .card .top { display:flex; align-items:center; gap:6px; }
-  .card .rg { font-size:9.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#57503f; }
-  .card h3 { font-family:'DejaVu Serif', Georgia, serif; font-size:13px; font-weight:700; line-height:1.14; margin-top:5px; overflow:hidden; }
-  .card p { margin-top:auto; font-size:10px; line-height:1.2; color:#514a3a; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .rail { flex:1 1 0; display:flex; flex-direction:column; min-width:0; border-left:2px solid #1a1811; padding-left:12px; }
-  .rail h4 { font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; border-bottom:2px solid #1a1811; padding-bottom:4px; margin-bottom:4px; }
-  .rows { flex:1 1 auto; display:flex; flex-direction:column; justify-content:space-between; min-height:0; }
-  .line { display:flex; gap:6px; align-items:baseline; white-space:nowrap; overflow:hidden; }
-  .line b { flex:0 0 auto; min-width:16px; text-align:right; font-size:10px; }
-  .line .rt { flex:0 0 auto; font-size:8.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.3px; }
-  .line .ht { font-size:10.5px; overflow:hidden; text-overflow:ellipsis; }
-  .foot { flex:0 0 auto; margin-top:10px; border-top:2px solid #1a1811; padding-top:6px; display:flex; justify-content:space-between; gap:12px; font-size:10px; letter-spacing:1px; text-transform:uppercase; color:#7a7362; }
+  body { background:#f7f3ea; color:#1a1811; overflow:hidden; font-family:'DejaVu Sans', Arial, sans-serif; display:flex; flex-direction:column; padding:15px 28px 12px; }
+  .mast { text-align:center; font-family:'DejaVu Serif', Georgia, serif; font-weight:700; font-size:22px; letter-spacing:11px; }
+  .kicker { text-align:center; font-size:9.5px; letter-spacing:5px; color:#7a7362; margin-top:3px; }
+  .date { text-align:center; font-family:'DejaVu Serif', Georgia, serif; font-weight:700; font-size:46px; line-height:1.02; margin-top:5px; }
+  .tally { text-align:center; font-size:12.5px; font-weight:700; letter-spacing:3px; color:#a8281f; margin-top:5px; }
+  .hr { border:0; border-top:3px double #1a1811; margin-top:7px; }
+  .featured { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin-top:8px; }
+  .card { border:1px solid #e2dac9; border-top:3px solid var(--cc); border-radius:5px; background:#fffdf8; padding:6px 6px 7px; display:flex; flex-direction:column; align-items:center; overflow:hidden; }
+  .card svg.scene { display:block; border-radius:3px; border:1px solid #e6ded0; }
+  .card .rg { font-size:8px; font-weight:700; letter-spacing:0.7px; text-transform:uppercase; color:#57503f; margin-top:4px; text-align:center; }
+  .card h3 { font-family:'DejaVu Serif', Georgia, serif; font-size:11px; font-weight:700; line-height:1.08; margin-top:2px; text-align:center; }
+  .card p { font-size:8.5px; line-height:1.12; color:#514a3a; margin-top:2px; text-align:center; }
+  .numhead { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#7a7362; text-align:center; margin-top:8px; }
+  .numbers { display:flex; border-top:2px solid #1a1811; border-bottom:2px solid #1a1811; padding:5px 0; margin-top:3px; }
+  .num { flex:1 1 0; text-align:center; }
+  .num .v { font-family:'DejaVu Serif', Georgia, serif; font-size:28px; font-weight:700; line-height:1; letter-spacing:-0.5px; }
+  .num .l { font-size:8.5px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:#7a7362; margin-top:3px; }
+  .mapwrap { margin-top:8px; }
+  .map { width:100%; height:auto; display:block; }
+  .mapcap { text-align:center; font-size:9px; letter-spacing:1.2px; text-transform:uppercase; color:#7a7362; margin-top:2px; }
+  .list { margin-top:8px; border-top:2px solid #1a1811; padding-top:6px; column-count:3; column-gap:20px; }
+  .item { display:flex; gap:5px; align-items:baseline; font-size:9.5px; line-height:1.4; margin-bottom:1px; break-inside:avoid; }
+  .item b { flex:0 0 auto; min-width:15px; text-align:right; font-weight:700; }
+  .item .rt { flex:0 0 auto; font-size:7.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.3px; }
+  .item .ht { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .foot { margin-top:auto; border-top:2px solid #1a1811; padding-top:5px; display:flex; justify-content:space-between; gap:14px; font-size:9px; letter-spacing:0.8px; text-transform:uppercase; color:#7a7362; }
+  .foot .say { color:#a8281f; font-weight:700; }
   #diag { display:none; }
 </style>
 </head>
@@ -43,107 +40,249 @@
   <div class="mast">THE WORLD TODAY</div>
   <div class="kicker">INDEPENDENT WORLD EDITION</div>
   <div class="date">WEDNESDAY 18 NOVEMBER 2026</div>
+  <div class="tally">36 STORIES &middot; SIX CONTINENTS &middot; ONE DAY</div>
   <hr class="hr">
-  <div class="tally">16 STORIES &middot; 6 CONTINENTS &middot; ONE DAY</div>
 
-  <div class="lead" style="--lc:#38507e;--lb:#e9eef7">
-    <span class="gl"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16h18"/><path d="M6 16a6 6 0 0 1 12 0"/><path d="M8 16v5"/><path d="M16 16v5"/></svg></span>
-    <div>
-      <div class="badge">Europe &middot; lead</div>
-      <h2>Storm Lothar shuts three Rhine crossings</h2>
+  <div class="featured">
+    <div class="card" style="--cc:#38507e">
+      <svg class="scene" viewBox="0 0 120 90" width="120" height="90" role="img" aria-label="a bridge span over a swollen river, two boats and slanting rain"><title>a bridge span over a swollen river, two boats and slanting rain</title><rect x="0" y="0" width="120" height="90" fill="#dbe4ee"/>
+    <rect x="0" y="60" width="120" height="30" fill="#7f9ab4"/>
+    <path d="M0 63 Q15 59 30 63 T60 63 T90 63 T120 63" stroke="#6f8aa4" stroke-width="1" fill="none"/>
+    <line x1="6" y1="40" x2="114" y2="40" stroke="#38507e" stroke-width="4"/>
+    <path d="M18 40 Q34 24 50 40" stroke="#38507e" stroke-width="3" fill="none"/>
+    <path d="M50 40 Q66 24 82 40" stroke="#38507e" stroke-width="3" fill="none"/>
+    <line x1="18" y1="40" x2="18" y2="61" stroke="#38507e" stroke-width="2"/>
+    <line x1="82" y1="40" x2="82" y2="61" stroke="#38507e" stroke-width="2"/>
+    <path d="M24 70 h12 l-3 5 h-6 z" fill="#2f4a66"/><line x1="30" y1="70" x2="30" y2="62" stroke="#2f4a66" stroke-width="1.5"/>
+    <path d="M86 76 h12 l-3 5 h-6 z" fill="#2f4a66"/><line x1="92" y1="76" x2="92" y2="68" stroke="#2f4a66" stroke-width="1.5"/>
+    <g stroke="#b6c6d8" stroke-width="1.5" stroke-linecap="round">
+      <line x1="22" y1="10" x2="16" y2="26"/><line x1="42" y1="6" x2="36" y2="22"/>
+      <line x1="64" y1="12" x2="58" y2="28"/><line x1="90" y1="8" x2="84" y2="24"/>
+      <line x1="106" y1="14" x2="100" y2="30"/></g></svg>
+      <div class="rg">Europe &middot; CLIMATE</div>
+      <h3>Storm shuts three Rhine crossings</h3>
       <p>the river ran 4.2 metres above its seasonal level</p>
     </div>
+    <div class="card" style="--cc:#a04329">
+      <svg class="scene" viewBox="0 0 120 90" width="120" height="90" role="img" aria-label="a hillside of trees under drifting smoke with a low fire line"><title>a hillside of trees under drifting smoke with a low fire line</title><rect x="0" y="0" width="120" height="90" fill="#f0e3d2"/>
+    <path d="M0 74 Q28 50 56 74 T120 74 L120 90 L0 90 Z" fill="#8f8a62"/>
+    <path d="M0 82 Q32 66 60 82 T120 82 L120 90 L0 90 Z" fill="#767a4e"/>
+    <path d="M24 76 l6 -15 l6 15 z" fill="#4f5a35"/><line x1="30" y1="76" x2="30" y2="83" stroke="#4f5a35" stroke-width="2"/>
+    <path d="M44 78 l5 -12 l5 12 z" fill="#4f5a35"/><line x1="49" y1="78" x2="49" y2="84" stroke="#4f5a35" stroke-width="2"/>
+    <path d="M96 76 l6 -13 l6 13 z" fill="#4f5a35"/><line x1="102" y1="76" x2="102" y2="83" stroke="#4f5a35" stroke-width="2"/>
+    <path d="M8 72 q10 -7 6 -18 q15 7 8 22" stroke="#c9a17c" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.8"/>
+    <path d="M56 70 q13 -8 7 -21 q17 9 8 25" stroke="#c49a72" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.75"/>
+    <path d="M80 74 q10 -6 5 -16 q14 6 7 20" stroke="#c9a17c" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.8"/>
+    <path d="M8 81 H114" stroke="#d8762a" stroke-width="2.5" stroke-dasharray="4 3"/></svg>
+      <div class="rg">Americas &middot; WILDFIRES</div>
+      <h3>Wildfire season closes early in the Pacific Northwest</h3>
+      <p>480,000 hectares burned this year</p>
+    </div>
+    <div class="card" style="--cc:#9c7418">
+      <svg class="scene" viewBox="0 0 120 90" width="120" height="90" role="img" aria-label="a fabrication plant beside a wafer disc and two steaming towers"><title>a fabrication plant beside a wafer disc and two steaming towers</title><rect x="0" y="0" width="120" height="90" fill="#e9ece3"/>
+    <rect x="12" y="46" width="66" height="34" fill="#cdd2c1"/>
+    <line x1="12" y1="46" x2="78" y2="46" stroke="#9c7418" stroke-width="3"/>
+    <rect x="20" y="56" width="10" height="12" fill="#b7bdaa"/><rect x="36" y="56" width="10" height="12" fill="#b7bdaa"/>
+    <rect x="52" y="56" width="10" height="12" fill="#b7bdaa"/>
+    <rect x="86" y="30" width="26" height="50" fill="#d7dbcb"/>
+    <rect x="88" y="24" width="7" height="34" fill="#c2c7b6"/>
+    <circle cx="99" cy="18" r="5" fill="#dfe3d6"/><circle cx="107" cy="10" r="4" fill="#e4e8dc"/>
+    <circle cx="34" cy="24" r="12" fill="#eae4d2" stroke="#9c7418" stroke-width="2"/>
+    <line x1="34" y1="12" x2="34" y2="36" stroke="#c3bba4" stroke-width="1"/>
+    <line x1="22" y1="24" x2="46" y2="24" stroke="#c3bba4" stroke-width="1"/>
+    <rect x="0" y="80" width="120" height="10" fill="#c7cbb9"/></svg>
+      <div class="rg">Asia &middot; TECHNOLOGY</div>
+      <h3>Chipmakers agree a shared export register</h3>
+      <p>3 foundries signed the accord</p>
+    </div>
+    <div class="card" style="--cc:#855a99">
+      <svg class="scene" viewBox="0 0 120 90" width="120" height="90" role="img" aria-label="a parliament chamber of tiered benches with rows of figures"><title>a parliament chamber of tiered benches with rows of figures</title><rect x="0" y="0" width="120" height="90" fill="#efe9dc"/>
+    <line x1="0" y1="88" x2="120" y2="88" stroke="#d3c9b3"/>
+    <rect x="30" y="34" width="10" height="4" rx="1.5" fill="#c9bfa8"/><circle cx="35" cy="25" r="3" fill="#855a99"/><rect x="32.5" y="28" width="5" height="6" rx="1" fill="#855a99" opacity="0.85"/><rect x="42" y="34" width="10" height="4" rx="1.5" fill="#c9bfa8"/><rect x="54" y="34" width="10" height="4" rx="1.5" fill="#c9bfa8"/><circle cx="59" cy="25" r="3" fill="#855a99"/><rect x="56.5" y="28" width="5" height="6" rx="1" fill="#855a99" opacity="0.85"/><rect x="66" y="34" width="10" height="4" rx="1.5" fill="#c9bfa8"/><rect x="78" y="34" width="10" height="4" rx="1.5" fill="#c9bfa8"/><circle cx="83" cy="25" r="3" fill="#855a99"/><rect x="80.5" y="28" width="5" height="6" rx="1" fill="#855a99" opacity="0.85"/><rect x="24" y="50" width="10" height="4" rx="1.5" fill="#c9bfa8"/><rect x="36" y="50" width="10" height="4" rx="1.5" fill="#c9bfa8"/><circle cx="41" cy="41" r="3" fill="#855a99"/><rect x="38.5" y="44" width="5" height="6" rx="1" fill="#855a99" opacity="0.85"/><rect x="48" y="50" width="10" height="4" rx="1.5" fill="#c9bfa8"/><rect x="60" y="50" width="10" height="4" rx="1.5" fill="#c9bfa8"/><circle cx="65" cy="41" r="3" fill="#855a99"/><rect x="62.5" y="44" width="5" height="6" rx="1" fill="#855a99" opacity="0.85"/><rect x="72" y="50" width="10" height="4" rx="1.5" fill="#c9bfa8"/><rect x="84" y="50" width="10" height="4" rx="1.5" fill="#c9bfa8"/><circle cx="89" cy="41" r="3" fill="#855a99"/><rect x="86.5" y="44" width="5" height="6" rx="1" fill="#855a99" opacity="0.85"/><rect x="18" y="64" width="10" height="4" rx="1.5" fill="#c9bfa8"/><circle cx="23" cy="55" r="3" fill="#855a99"/><rect x="20.5" y="58" width="5" height="6" rx="1" fill="#855a99" opacity="0.85"/><rect x="30" y="64" width="10" height="4" rx="1.5" fill="#c9bfa8"/><rect x="42" y="64" width="10" height="4" rx="1.5" fill="#c9bfa8"/><circle cx="47" cy="55" r="3" fill="#855a99"/><rect x="44.5" y="58" width="5" height="6" rx="1" fill="#855a99" opacity="0.85"/><rect x="54" y="64" width="10" height="4" rx="1.5" fill="#c9bfa8"/><rect x="66" y="64" width="10" height="4" rx="1.5" fill="#c9bfa8"/><circle cx="71" cy="55" r="3" fill="#855a99"/><rect x="68.5" y="58" width="5" height="6" rx="1" fill="#855a99" opacity="0.85"/><rect x="78" y="64" width="10" height="4" rx="1.5" fill="#c9bfa8"/><rect x="90" y="64" width="10" height="4" rx="1.5" fill="#c9bfa8"/><circle cx="95" cy="55" r="3" fill="#855a99"/><rect x="92.5" y="58" width="5" height="6" rx="1" fill="#855a99" opacity="0.85"/>
+    <rect x="46" y="74" width="28" height="11" rx="2" fill="#8a7f66"/>
+    <rect x="58" y="69" width="4" height="5" fill="#6f6650"/></svg>
+      <div class="rg">Middle East &middot; POLITICS</div>
+      <h3>Ceasefire holds through a second week</h3>
+      <p>aid convoys crossed the border for 14 days</p>
+    </div>
+    <div class="card" style="--cc:#5c8634">
+      <svg class="scene" viewBox="0 0 120 90" width="120" height="90" role="img" aria-label="a field clinic tent with a queue of figures under a high sun"><title>a field clinic tent with a queue of figures under a high sun</title><rect x="0" y="0" width="120" height="90" fill="#f0ede2"/>
+    <rect x="0" y="72" width="120" height="18" fill="#cfc9b6"/>
+    <path d="M14 72 L40 34 L66 72 Z" fill="#cfd8c6"/>
+    <path d="M36 72 L40 62 L44 72 Z" fill="#a8b79c"/>
+    <line x1="40" y1="34" x2="40" y2="25" stroke="#5c8634" stroke-width="2"/>
+    <path d="M40 25 l11 4 l-11 4 z" fill="#5c8634"/>
+    <circle cx="101" cy="20" r="8" fill="#e7d9a8"/>
+    <g fill="#6d7a5d">
+      <circle cx="78" cy="52" r="3.4"/><rect x="75" y="56" width="6" height="16" rx="2"/>
+      <circle cx="90" cy="52" r="3.4"/><rect x="87" y="56" width="6" height="16" rx="2"/>
+      <circle cx="102" cy="52" r="3.4"/><rect x="99" y="56" width="6" height="16" rx="2"/>
+      <circle cx="114" cy="52" r="3.4"/><rect x="111" y="56" width="6" height="16" rx="2"/></g></svg>
+      <div class="rg">Africa &middot; HEALTH</div>
+      <h3>Measles drive reaches remote districts</h3>
+      <p>14 million jabs given in six weeks</p>
+    </div>
+    <div class="card" style="--cc:#2c8b86">
+      <svg class="scene" viewBox="0 0 120 90" width="120" height="90" role="img" aria-label="a spiral storm over a coastline edge lined with small houses"><title>a spiral storm over a coastline edge lined with small houses</title><rect x="0" y="0" width="120" height="90" fill="#e7eef1"/>
+    <rect x="0" y="30" width="60" height="60" fill="#7f9ab4"/>
+    <path d="M56 90 L56 58 Q80 48 120 54 L120 90 Z" fill="#8a9c6a"/>
+    <rect x="78" y="60" width="12" height="10" fill="#e0d7c2"/><path d="M76 60 L84 52 L92 60 Z" fill="#b5533e"/>
+    <rect x="98" y="62" width="11" height="8" fill="#e0d7c2"/><path d="M96 62 L103.5 55 L111 62 Z" fill="#b5533e"/>
+    <line x1="70" y1="74" x2="70" y2="60" stroke="#5d6b45" stroke-width="2"/>
+    <path d="M70 60 q-8 -4 -10 -10 M70 60 q8 -4 10 -10 M70 60 q0 -8 0 -12" stroke="#5d6b45" stroke-width="1.6" fill="none"/>
+    <path d="M48 20 a16 16 0 1 1 -16 16" fill="none" stroke="#2c8b86" stroke-width="3"/>
+    <path d="M42 30 a9 9 0 1 1 -9 9" fill="none" stroke="#2c8b86" stroke-width="2.5"/>
+    <circle cx="36" cy="35" r="3" fill="#2c8b86"/></svg>
+      <div class="rg">Oceania &middot; CLIMATE</div>
+      <h3>Cyclone skims the Coral Sea</h3>
+      <p>gusts reach 240 km/h offshore</p>
+    </div>
+    <div class="card" style="--cc:#38507e">
+      <svg class="scene" viewBox="0 0 120 90" width="120" height="90" role="img" aria-label="a falling line chart over low bars on a faint grid"><title>a falling line chart over low bars on a faint grid</title><rect x="0" y="0" width="120" height="90" fill="#fbf7ef"/>
+    <g stroke="#ddd6c6" stroke-width="1">
+      <line x1="18" y1="24" x2="112" y2="24"/><line x1="18" y1="42" x2="112" y2="42"/>
+      <line x1="18" y1="60" x2="112" y2="60"/><line x1="42" y1="12" x2="42" y2="78"/>
+      <line x1="66" y1="12" x2="66" y2="78"/><line x1="90" y1="12" x2="90" y2="78"/></g>
+    <line x1="18" y1="12" x2="18" y2="78" stroke="#8a8168" stroke-width="2"/>
+    <line x1="18" y1="78" x2="112" y2="78" stroke="#8a8168" stroke-width="2"/>
+    <g fill="#cdd3c2">
+      <rect x="30" y="58" width="9" height="20"/><rect x="54" y="48" width="9" height="30"/>
+      <rect x="78" y="54" width="9" height="24"/><rect x="100" y="64" width="9" height="14"/></g>
+    <polyline points="24,28 46,34 68,48 90,58 108,68" fill="none" stroke="#38507e" stroke-width="3"/>
+    <g fill="#38507e"><circle cx="24" cy="28" r="2.5"/><circle cx="46" cy="34" r="2.5"/><circle cx="68" cy="48" r="2.5"/><circle cx="90" cy="58" r="2.5"/><circle cx="108" cy="68" r="2.5"/></g></svg>
+      <div class="rg">Europe &middot; MARKETS</div>
+      <h3>Eurozone inflation eases to 2.1 percent</h3>
+      <p>the rate slipped 0.3 points on the month</p>
+    </div>
+    <div class="card" style="--cc:#9c7418">
+      <svg class="scene" viewBox="0 0 120 90" width="120" height="90" role="img" aria-label="a satellite above the curve of the Earth beside a ground dish"><title>a satellite above the curve of the Earth beside a ground dish</title><rect x="0" y="0" width="120" height="90" fill="#eef3f7"/>
+    <g fill="#c3ccd6"><circle cx="14" cy="14" r="1.4"/><circle cx="34" cy="8" r="1.1"/><circle cx="98" cy="12" r="1.4"/><circle cx="112" cy="26" r="1.1"/><circle cx="80" cy="6" r="1"/></g>
+    <path d="M0 78 Q60 52 120 78 L120 90 L0 90 Z" fill="#9db8cf"/>
+    <rect x="52" y="24" width="16" height="13" rx="2" fill="#8a93a0"/>
+    <rect x="30" y="26" width="20" height="8" fill="#9c7418"/><rect x="70" y="26" width="20" height="8" fill="#9c7418"/>
+    <line x1="52" y1="31" x2="50" y2="31" stroke="#8a93a0" stroke-width="2"/>
+    <path d="M60 37 v8" stroke="#8a93a0" stroke-width="2"/>
+    <path d="M88 76 Q100 62 112 76" fill="#b9c3cc" stroke="#8a949f" stroke-width="1.5"/>
+    <line x1="100" y1="76" x2="100" y2="84" stroke="#8a949f" stroke-width="2"/></svg>
+      <div class="rg">Asia &middot; SCIENCE</div>
+      <h3>Lunar relay satellite reaches its orbit</h3>
+      <p>the craft will relay signals for 2 years</p>
+    </div>
+    <div class="card" style="--cc:#a04329">
+      <svg class="scene" viewBox="0 0 120 90" width="120" height="90" role="img" aria-label="a colonnaded courthouse on broad steps with two figures"><title>a colonnaded courthouse on broad steps with two figures</title><rect x="0" y="0" width="120" height="90" fill="#eef0ee"/>
+    <path d="M24 34 L60 16 L96 34 Z" fill="#e2ded1" stroke="#b9b3a2" stroke-width="1.5"/>
+    <rect x="24" y="34" width="72" height="8" fill="#d8d3c5"/>
+    <g fill="#e6e2d6" stroke="#c6c0b0" stroke-width="1">
+      <rect x="30" y="42" width="6" height="26"/><rect x="44" y="42" width="6" height="26"/>
+      <rect x="58" y="42" width="6" height="26"/><rect x="72" y="42" width="6" height="26"/>
+      <rect x="86" y="42" width="6" height="26"/></g>
+    <rect x="24" y="68" width="72" height="7" fill="#d8d3c5"/>
+    <rect x="18" y="75" width="84" height="4" fill="#cfc9b8"/>
+    <rect x="12" y="79" width="96" height="4" fill="#c6c0af"/>
+    <rect x="6" y="83" width="108" height="7" fill="#bcb6a5"/>
+    <g fill="#a04329">
+      <circle cx="42" cy="72" r="2.6"/><rect x="39.5" y="75" width="5" height="8" rx="1.5"/>
+      <circle cx="76" cy="72" r="2.6"/><rect x="73.5" y="75" width="5" height="8" rx="1.5"/></g></svg>
+      <div class="rg">Americas &middot; LAW</div>
+      <h3>Court orders a review of asylum rules</h3>
+      <p>the ruling affects 40,000 pending claims</p>
+    </div>
+    <div class="card" style="--cc:#5c8634">
+      <svg class="scene" viewBox="0 0 120 90" width="120" height="90" role="img" aria-label="a freight train on rails between the sea and low hills"><title>a freight train on rails between the sea and low hills</title><rect x="0" y="0" width="120" height="90" fill="#e8eef0"/>
+    <rect x="0" y="18" width="34" height="72" fill="#7f9ab4"/>
+    <path d="M34 62 Q72 44 120 60 L120 90 L34 90 Z" fill="#9aa77e"/>
+    <path d="M40 74 H120" stroke="#8a8168" stroke-width="1.5"/>
+    <path d="M40 82 H120" stroke="#8a8168" stroke-width="1.5"/>
+    <g stroke="#a49b83" stroke-width="1.5">
+      <line x1="46" y1="72" x2="46" y2="84"/><line x1="60" y1="72" x2="60" y2="84"/>
+      <line x1="74" y1="72" x2="74" y2="84"/><line x1="88" y1="72" x2="88" y2="84"/>
+      <line x1="102" y1="72" x2="102" y2="84"/><line x1="114" y1="72" x2="114" y2="84"/></g>
+    <rect x="48" y="60" width="30" height="14" rx="2" fill="#5c8634"/>
+    <rect x="52" y="64" width="6" height="6" fill="#e8eef0"/><rect x="62" y="64" width="6" height="6" fill="#e8eef0"/><rect x="70" y="64" width="6" height="6" fill="#e8eef0"/>
+    <rect x="82" y="60" width="30" height="14" rx="2" fill="#c8ccc0"/>
+    <rect x="86" y="64" width="6" height="6" fill="#eef1f4"/><rect x="96" y="64" width="6" height="6" fill="#eef1f4"/><rect x="104" y="64" width="6" height="6" fill="#eef1f4"/>
+    <g fill="#5c5a50"><circle cx="56" cy="76" r="2.6"/><circle cx="72" cy="76" r="2.6"/><circle cx="90" cy="76" r="2.6"/><circle cx="106" cy="76" r="2.6"/></g></svg>
+      <div class="rg">Africa &middot; ECONOMY</div>
+      <h3>Coastal rail line reopens after repairs</h3>
+      <p>the line carries 1,200 tonnes a day</p>
+    </div>
   </div>
 
-  <div class="figs">
-    <div class="fig"><div class="v">480,000</div><div class="l">hectares burned</div></div>
-    <div class="fig"><div class="v">240 km/h</div><div class="l">cyclone gusts</div></div>
-    <div class="fig"><div class="v">14 million</div><div class="l">children reached</div></div>
-    <div class="fig"><div class="v">78%</div><div class="l">voter turnout</div></div>
+  <div class="numhead">By the numbers</div>
+  <div class="numbers">
+    <div class="num"><div class="v">480,000</div><div class="l">hectares burned</div></div>
+    <div class="num"><div class="v">14 million</div><div class="l">jabs in six weeks</div></div>
+    <div class="num"><div class="v">240 km/h</div><div class="l">cyclone gusts</div></div>
+    <div class="num"><div class="v">1,200</div><div class="l">tonnes a day</div></div>
   </div>
 
-  <div class="band">
-    <div class="cards">
-      <div class="card" style="--cc:#a04329">
-        <div class="top"><span style="display:flex;color:#a04329"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 3.5 5 5 5 9a5 5 0 0 1-10 0c0-2 1-3.5 2.4-4.6-.2 2 .9 3 2 3-.2-2.2-.6-4.4.6-7.4z"/></svg></span><span class="rg">Americas</span></div>
-        <h3>Wildfire season closes early in the Pacific Northwest</h3>
-        <p>480,000 hectares burned this year</p>
-      </div>
-      <div class="card" style="--cc:#9c7418">
-        <div class="top"><span style="display:flex;color:#9c7418"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1"/><rect x="10" y="10" width="4" height="4"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg></span><span class="rg">Asia</span></div>
-        <h3>Chipmakers agree a shared export register</h3>
-        <p>three foundries signed the accord</p>
-      </div>
-      <div class="card" style="--cc:#855a99">
-        <div class="top"><span style="display:flex;color:#855a99"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10 12 5l8 5"/><path d="M6 10v8M10 10v8M14 10v8M18 10v8"/><path d="M3 18h18"/></svg></span><span class="rg">Middle East</span></div>
-        <h3>Ceasefire holds through a second week</h3>
-        <p>aid convoys crossed the border daily</p>
-      </div>
-      <div class="card" style="--cc:#5c8634">
-        <div class="top"><span style="display:flex;color:#5c8634"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7z"/></svg></span><span class="rg">Africa</span></div>
-        <h3>Measles drive reaches remote districts</h3>
-        <p>14 million jabs given in six weeks</p>
-      </div>
-      <div class="card" style="--cc:#2c8b86">
-        <div class="top"><span style="display:flex;color:#2c8b86"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4a8 8 0 0 1 8 8c0 3-2 5-5 5"/><path d="M12 20a8 8 0 0 1-8-8c0-3 2-5 5-5"/><circle cx="12" cy="12" r="1.5"/></svg></span><span class="rg">Oceania</span></div>
-        <h3>Cyclone Vaianu skims the Coral Sea</h3>
-        <p>gusts reach 240 km/h offshore</p>
-      </div>
-      <div class="card" style="--cc:#38507e">
-        <div class="top"><span style="display:flex;color:#38507e"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h17"/><path d="M6 20v-6M11 20V6M16 20v-9M20 20V9"/></svg></span><span class="rg">Europe</span></div>
-        <h3>Eurozone inflation eases to 2.1 percent</h3>
-        <p>the rate slipped 0.3 points on the month</p>
-      </div>
-      <div class="card" style="--cc:#9c7418">
-        <div class="top"><span style="display:flex;color:#9c7418"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 2.5 4 6 4 9l-2 3h-4l-2-3c0-3 1-6.5 4-9z"/><circle cx="12" cy="9" r="1.4"/><path d="M10 18l-2 3M14 18l2 3"/></svg></span><span class="rg">Asia</span></div>
-        <h3>Lunar relay satellite reaches its orbit</h3>
-        <p>the craft will relay signals for two years</p>
-      </div>
-      <div class="card" style="--cc:#a04329">
-        <div class="top"><span style="display:flex;color:#a04329"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="9" rx="1.5"/><path d="M9 4h6v7H9z"/><path d="M9 15h5"/></svg></span><span class="rg">Americas</span></div>
-        <h3>Andean runoff set for early December</h3>
-        <p>78% of electors cast a ballot</p>
-      </div>
-    </div>
-    <div class="rail">
-      <h4>The rest of the day &middot; 7 briefs</h4>
-      <div class="rows">
-        <div class="line" data-n="10"><b style="color:#5c8634">10</b><span class="rt" style="color:#5c8634">Africa</span><span class="ht">Coastal rail line reopens after repairs</span></div>
-        <div class="line" data-n="11"><b style="color:#38507e">11</b><span class="rt" style="color:#38507e">Europe</span><span class="ht">Court orders a review of asylum rules</span></div>
-        <div class="line" data-n="12"><b style="color:#9c7418">12</b><span class="rt" style="color:#9c7418">Asia</span><span class="ht">Monsoon retreat leaves reservoirs low</span></div>
-        <div class="line" data-n="13"><b style="color:#a04329">13</b><span class="rt" style="color:#a04329">Americas</span><span class="ht">Dengue vaccine rollout widens</span></div>
-        <div class="line" data-n="14"><b style="color:#855a99">14</b><span class="rt" style="color:#855a99">Middle East</span><span class="ht">Metro extension opens to passengers</span></div>
-        <div class="line" data-n="15"><b style="color:#5c8634">15</b><span class="rt" style="color:#5c8634">Africa</span><span class="ht">Regional bloc names a new chair</span></div>
-        <div class="line" data-n="16"><b style="color:#2c8b86">16</b><span class="rt" style="color:#2c8b86">Oceania</span><span class="ht">Ferry service resumes across the strait</span></div>
-      </div>
-    </div>
+  <div class="mapwrap">
+    <svg class="map" viewBox="0 0 1000 240" role="img" aria-label="world map with numbered dots">
+  <path d="M70 96 L120 62 L200 52 L286 66 L304 104 L262 132 L236 170 L206 178 L190 154 L150 140 L118 156 L92 138 Z" fill="#ddd6c3" stroke="#b3ab95" stroke-width="1.5"/>
+  <path d="M330 46 L372 40 L386 62 L354 74 Z" fill="#ddd6c3" stroke="#b3ab95" stroke-width="1.5"/>
+  <path d="M262 150 L318 148 L336 184 L322 226 L296 238 L276 222 L268 182 Z" fill="#ddd6c3" stroke="#b3ab95" stroke-width="1.5"/>
+  <path d="M470 62 L520 50 L560 60 L574 88 L548 108 L506 110 L478 96 Z" fill="#ddd6c3" stroke="#b3ab95" stroke-width="1.5"/>
+  <path d="M480 118 L546 112 L600 132 L606 172 L584 214 L556 230 L536 206 L512 176 L478 150 Z" fill="#ddd6c3" stroke="#b3ab95" stroke-width="1.5"/>
+  <path d="M572 74 L660 44 L770 40 L872 62 L908 100 L872 138 L812 148 L772 126 L706 140 L646 122 L600 100 Z" fill="#ddd6c3" stroke="#b3ab95" stroke-width="1.5"/>
+  <path d="M792 168 L872 166 L900 196 L878 232 L826 234 L794 208 Z" fill="#ddd6c3" stroke="#b3ab95" stroke-width="1.5"/><circle cx="505" cy="76" r="13" fill="#38507e"/><text x="505" y="76" dy="5" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">1</text><circle cx="120" cy="54" r="13" fill="#a04329"/><text x="120" y="54" dy="5" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">2</text><circle cx="852" cy="82" r="13" fill="#9c7418"/><text x="852" y="82" dy="5" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">3</text><circle cx="644" cy="104" r="13" fill="#855a99"/><text x="644" y="104" dy="5" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">4</text><circle cx="556" cy="152" r="13" fill="#5c8634"/><text x="556" y="152" dy="5" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">5</text><circle cx="906" cy="200" r="13" fill="#2c8b86"/><text x="906" y="200" dy="5" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">6</text><circle cx="552" cy="96" r="13" fill="#38507e"/><text x="552" y="96" dy="5" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">7</text><circle cx="722" cy="66" r="13" fill="#9c7418"/><text x="722" y="66" dy="5" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">8</text><circle cx="286" cy="196" r="13" fill="#a04329"/><text x="286" y="196" dy="5" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">9</text><circle cx="592" cy="180" r="13" fill="#5c8634"/><text x="592" y="180" dy="5" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">10</text></svg>
+    <div class="mapcap">The ten numbered dots mark the featured stories 1&ndash;10</div>
+  </div>
+
+  <div class="list">
+    <div class="item"><b style="color:#38507e">11</b><span class="rt" style="color:#38507e">Europe</span><span class="ht">Data ruling binds four member states</span></div>
+    <div class="item"><b style="color:#9c7418">12</b><span class="rt" style="color:#9c7418">Asia</span><span class="ht">Monsoon retreat leaves reservoirs low</span></div>
+    <div class="item"><b style="color:#a04329">13</b><span class="rt" style="color:#a04329">Americas</span><span class="ht">Dengue vaccine rollout widens</span></div>
+    <div class="item"><b style="color:#855a99">14</b><span class="rt" style="color:#855a99">Middle East</span><span class="ht">Metro extension opens to passengers</span></div>
+    <div class="item"><b style="color:#5c8634">15</b><span class="rt" style="color:#5c8634">Africa</span><span class="ht">Regional bloc names a new chair</span></div>
+    <div class="item"><b style="color:#2c8b86">16</b><span class="rt" style="color:#2c8b86">Oceania</span><span class="ht">Ferry service resumes across the strait</span></div>
+    <div class="item"><b style="color:#38507e">17</b><span class="rt" style="color:#38507e">Europe</span><span class="ht">Grid operator clears a winter reserve</span></div>
+    <div class="item"><b style="color:#9c7418">18</b><span class="rt" style="color:#9c7418">Asia</span><span class="ht">Index closes at a three-month high</span></div>
+    <div class="item"><b style="color:#a04329">19</b><span class="rt" style="color:#a04329">Americas</span><span class="ht">Telescope survey logs a thousand new stars</span></div>
+    <div class="item"><b style="color:#5c8634">20</b><span class="rt" style="color:#5c8634">Africa</span><span class="ht">Solar park switches on a second phase</span></div>
+    <div class="item"><b style="color:#38507e">21</b><span class="rt" style="color:#38507e">Europe</span><span class="ht">Continental cup final goes to penalties</span></div>
+    <div class="item"><b style="color:#855a99">22</b><span class="rt" style="color:#855a99">Middle East</span><span class="ht">Cloud seeding trial lifts local rainfall</span></div>
+    <div class="item"><b style="color:#9c7418">23</b><span class="rt" style="color:#9c7418">Asia</span><span class="ht">Platform code takes effect for six services</span></div>
+    <div class="item"><b style="color:#2c8b86">24</b><span class="rt" style="color:#2c8b86">Oceania</span><span class="ht">Reef survey finds coral recovering</span></div>
+    <div class="item"><b style="color:#a04329">25</b><span class="rt" style="color:#a04329">Americas</span><span class="ht">Coffee futures slip on a larger crop</span></div>
+    <div class="item"><b style="color:#5c8634">26</b><span class="rt" style="color:#5c8634">Africa</span><span class="ht">Malaria net drive reaches lake districts</span></div>
+    <div class="item"><b style="color:#38507e">27</b><span class="rt" style="color:#38507e">Europe</span><span class="ht">Rail operator trials driverless shuttles</span></div>
+    <div class="item"><b style="color:#9c7418">28</b><span class="rt" style="color:#9c7418">Asia</span><span class="ht">Port traffic sets a monthly record</span></div>
+    <div class="item"><b style="color:#a04329">29</b><span class="rt" style="color:#a04329">Americas</span><span class="ht">Lawmakers pass a sixty-day budget stopgap</span></div>
+    <div class="item"><b style="color:#855a99">30</b><span class="rt" style="color:#855a99">Middle East</span><span class="ht">Hospital ship docks for a relief tour</span></div>
+    <div class="item"><b style="color:#5c8634">31</b><span class="rt" style="color:#5c8634">Africa</span><span class="ht">Bourse lists its first green bond</span></div>
+    <div class="item"><b style="color:#2c8b86">32</b><span class="rt" style="color:#2c8b86">Oceania</span><span class="ht">Wind farm clears its final permit</span></div>
+    <div class="item"><b style="color:#38507e">33</b><span class="rt" style="color:#38507e">Europe</span><span class="ht">Lab repeats a warm-cell battery test</span></div>
+    <div class="item"><b style="color:#9c7418">34</b><span class="rt" style="color:#9c7418">Asia</span><span class="ht">High-speed line cuts a cross-country trip</span></div>
+    <div class="item"><b style="color:#a04329">35</b><span class="rt" style="color:#a04329">Americas</span><span class="ht">Snowpack survey shows a deeper base</span></div>
+    <div class="item"><b style="color:#5c8634">36</b><span class="rt" style="color:#5c8634">Africa</span><span class="ht">Mobile network reaches a rural province</span></div>
   </div>
 
   <div class="foot">
-    <span>Sources: Reuters &middot; AP &middot; AFP &middot; BBC &middot; Bloomberg</span>
-    <span style="color:#a8281f;font-weight:700">Every brief happened, or was first reported, on this day</span>
+    <span>Wires: Reuters &middot; AP &middot; Bloomberg &middot; AFP &middot; BBC</span>
+    <span class="say">Every story on this page happened, or was first reported, on this day.</span>
   </div>
 
   <div id="diag"></div>
   <script>
     window.__diag = function () {
-      var out = { w: document.body.scrollWidth, h: document.body.scrollHeight };
-      out.cards = document.querySelectorAll('.card').length;
-      out.lines = document.querySelectorAll('.line').length;
+      var out = {
+        w: document.body.scrollWidth, h: document.body.scrollHeight,
+        featured: document.querySelectorAll('.card').length,
+        items: document.querySelectorAll('.item').length,
+        scenes: document.querySelectorAll('svg.scene').length,
+        scenePx: (function () { var r = document.querySelector('svg.scene').getBoundingClientRect(); return Math.round(r.width) + 'x' + Math.round(r.height); })()
+      };
       var bad = [];
+      if (out.h > 1024) bad.push('body-tall:' + out.h);
+      if (out.w > 1024) bad.push('body-wide:' + out.w);
       document.querySelectorAll('.card').forEach(function (c) {
         if (c.scrollHeight > c.clientHeight + 1) bad.push('card-overflow');
+        var h = c.querySelector('h3'); if (h && h.scrollHeight > h.clientHeight + 1) bad.push('headline-clipped');
+        var p = c.querySelector('p'); if (p && p.scrollHeight > p.clientHeight + 1) bad.push('fact-clipped');
       });
-      document.querySelectorAll('.card p').forEach(function (p) {
-        if (p.scrollWidth > p.clientWidth + 1) bad.push('fact-clipped');
-      });
-      document.querySelectorAll('.line .ht').forEach(function (h) {
-        if (h.scrollWidth > h.clientWidth + 1) bad.push('rail-truncated');
-      });
-      var rows = document.querySelector('.rows');
-      if (rows.scrollHeight > rows.clientHeight + 1) bad.push('rail-overflow');
-      var band = document.querySelector('.band');
-      if (band.scrollHeight > band.clientHeight + 1) bad.push('band-overflow');
+      var f = document.querySelector('.featured'); if (f.scrollHeight > f.clientHeight + 1) bad.push('featured-overflow');
+      var l = document.querySelector('.list'); if (l.scrollHeight > l.clientHeight + 1) bad.push('list-overflow');
+      document.querySelectorAll('.item .ht').forEach(function (x) { if (x.scrollWidth > x.clientWidth + 1) bad.push('list-truncated'); });
       out.overflow = bad;
       document.getElementById('diag').textContent = JSON.stringify(out);
       return out;
