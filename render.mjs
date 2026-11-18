@@ -1,4 +1,4 @@
-// render.mjs — variant B: screenshot this dir's page.html to a 1024x1024 PNG
+// render.mjs — VARIANT C: screenshot this dir's page.html to a 1024x1024 PNG
 // with the local Chromium build. Reads window.__diag() before shooting so layout
 // faults surface as text, not as a silently clipped picture.
 import { writeFileSync } from 'node:fs';

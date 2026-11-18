@@ -1,6 +1,7 @@
-// main.ts — VARIANT B handoff. Hands this entry.png to make.fun's output directory.
-// Node 22+ type stripping; standard library only. Before copying it re-reads the
-// PNG header and refuses anything that is not exactly 1024x1024 or over 1 MiB.
+// main.ts — VARIANT C handoff. Hands variant C's entry.png to make.fun's output
+// directory. Node 22+ type stripping; standard library only. Before copying it
+// re-reads the PNG header and refuses anything that is not exactly 1024x1024 or
+// over 1 MiB.
 import { copyFileSync, existsSync, mkdirSync, readFileSync, statSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
