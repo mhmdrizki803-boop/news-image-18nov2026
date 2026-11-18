@@ -1,6 +1,8 @@
-// render.mjs — VARIANT C: screenshot this dir's page.html to a 1024x1024 PNG
-// with the local Chromium build. Reads window.__diag() before shooting so layout
-// faults surface as text, not as a silently clipped picture.
+// render.mjs — VARIANT D: screenshot this dir's page.html with the local Chromium.
+// Default: a 1024x1024 PNG (entry.png). With PREVIEW=300 it shoots a 300x300 PNG
+// so we can look at the page exactly as the judge will: a 1024px page at 300px.
+// window.__diag() is read first, so layout faults surface as text, not as a silently
+// clipped picture.
 import { writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
@@ -8,10 +10,12 @@ import { dirname, join } from 'node:path';
 
 const PLAYWRIGHT = '/home/ubuntu/gleam-scan/node_modules/.pnpm/playwright@1.65.0/node_modules/playwright/index.js';
 const CHROME = '/home/ubuntu/.cache/ms-playwright/chromium-1140/chrome-linux/chrome';
-const SIZE = 1024;
+
+const preview = process.env.PREVIEW ? Number(process.env.PREVIEW) : 0;
+const SIZE = preview || 1024;
 
 const here = dirname(fileURLToPath(import.meta.url));
-const outFile = process.argv[2] || 'entry.png';
+const outFile = process.argv[2] || (preview ? `preview-${SIZE}.png` : 'entry.png');
 
 const require = createRequire(PLAYWRIGHT);
 const { chromium } = require(PLAYWRIGHT);
