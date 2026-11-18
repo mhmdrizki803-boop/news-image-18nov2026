@@ -1,6 +1,12 @@
-// gen.mjs — build page.html (1024x1024) from news.json, then render entry.png.
-// One day's world front page: a huge date, ten featured cards each carrying a DRAWN
-// scene of the event, four figures, a world map with numbered dots, and the rest of the day.
+// gen.mjs — VARIANT B of the 18 Nov 2026 world front page (1024x1024).
+//
+// Hierarchy (deliberately different from the shipped entry):
+//   masthead + huge date  ->  SIX featured cards (one per continent, 3x2 grid,
+//   each a LARGE 200x140 DRAWN scene)  ->  world map LARGER, centred, six dots
+//   ->  BY THE NUMBERS as one wide band of four very large figures
+//   ->  the other THIRTY stories in four narrow columns -> sources footer.
+//
+// Everything is drawn from news.json; no external assets.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
@@ -10,10 +16,8 @@ const here = dirname(fileURLToPath(import.meta.url));
 const news = JSON.parse(readFileSync(join(here, 'news.json'), 'utf8'));
 const sorted = [...news].sort((a, b) => a.num - b.num);
 
-const esc = (s) =>
-  String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-// one accent per region (muted ink)
 const TINT = {
   Europe: '#38507e',
   Americas: '#a04329',
@@ -23,219 +27,174 @@ const TINT = {
   Oceania: '#2c8b86',
 };
 const ink = (r) => TINT[r] || TINT.Europe;
+const kick = (s) => esc(String(s).toUpperCase());
 
-const sky = (f) => `<rect x="0" y="0" width="120" height="90" fill="${f}"/>`;
-
-// ---- ten DRAWN SCENES, 120x90, built from real shapes ------------------------
+// ---- SIX drawn scenes, native 200 x 140, one per continent -------------------
 const SCENES = {
-  // 1 Europe — storm over the Rhine, bridge + boats + rain
-  1: (c) => `${sky('#dbe4ee')}
-    <rect x="0" y="60" width="120" height="30" fill="#7f9ab4"/>
-    <path d="M0 63 Q15 59 30 63 T60 63 T90 63 T120 63" stroke="#6f8aa4" stroke-width="1" fill="none"/>
-    <line x1="6" y1="40" x2="114" y2="40" stroke="${c}" stroke-width="4"/>
-    <path d="M18 40 Q34 24 50 40" stroke="${c}" stroke-width="3" fill="none"/>
-    <path d="M50 40 Q66 24 82 40" stroke="${c}" stroke-width="3" fill="none"/>
-    <line x1="18" y1="40" x2="18" y2="61" stroke="${c}" stroke-width="2"/>
-    <line x1="82" y1="40" x2="82" y2="61" stroke="${c}" stroke-width="2"/>
-    <path d="M24 70 h12 l-3 5 h-6 z" fill="#2f4a66"/><line x1="30" y1="70" x2="30" y2="62" stroke="#2f4a66" stroke-width="1.5"/>
-    <path d="M86 76 h12 l-3 5 h-6 z" fill="#2f4a66"/><line x1="92" y1="76" x2="92" y2="68" stroke="#2f4a66" stroke-width="1.5"/>
-    <g stroke="#b6c6d8" stroke-width="1.5" stroke-linecap="round">
-      <line x1="22" y1="10" x2="16" y2="26"/><line x1="42" y1="6" x2="36" y2="22"/>
-      <line x1="64" y1="12" x2="58" y2="28"/><line x1="90" y1="8" x2="84" y2="24"/>
-      <line x1="106" y1="14" x2="100" y2="30"/></g>`,
-  // 2 Americas — wildfire hillside, trees + smoke + fire line
-  2: (c) => `${sky('#f0e3d2')}
-    <path d="M0 74 Q28 50 56 74 T120 74 L120 90 L0 90 Z" fill="#8f8a62"/>
-    <path d="M0 82 Q32 66 60 82 T120 82 L120 90 L0 90 Z" fill="#767a4e"/>
-    <path d="M24 76 l6 -15 l6 15 z" fill="#4f5a35"/><line x1="30" y1="76" x2="30" y2="83" stroke="#4f5a35" stroke-width="2"/>
-    <path d="M44 78 l5 -12 l5 12 z" fill="#4f5a35"/><line x1="49" y1="78" x2="49" y2="84" stroke="#4f5a35" stroke-width="2"/>
-    <path d="M96 76 l6 -13 l6 13 z" fill="#4f5a35"/><line x1="102" y1="76" x2="102" y2="83" stroke="#4f5a35" stroke-width="2"/>
-    <path d="M8 72 q10 -7 6 -18 q15 7 8 22" stroke="#c9a17c" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.8"/>
-    <path d="M56 70 q13 -8 7 -21 q17 9 8 25" stroke="#c49a72" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.75"/>
-    <path d="M80 74 q10 -6 5 -16 q14 6 7 20" stroke="#c9a17c" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.8"/>
-    <path d="M8 81 H114" stroke="#d8762a" stroke-width="2.5" stroke-dasharray="4 3"/>`,
-  // 3 Asia — chip fab, building + wafer disc + steaming towers
-  3: (c) => `${sky('#e9ece3')}
-    <rect x="12" y="46" width="66" height="34" fill="#cdd2c1"/>
-    <line x1="12" y1="46" x2="78" y2="46" stroke="${c}" stroke-width="3"/>
-    <rect x="20" y="56" width="10" height="12" fill="#b7bdaa"/><rect x="36" y="56" width="10" height="12" fill="#b7bdaa"/>
-    <rect x="52" y="56" width="10" height="12" fill="#b7bdaa"/>
-    <rect x="86" y="30" width="26" height="50" fill="#d7dbcb"/>
-    <rect x="88" y="24" width="7" height="34" fill="#c2c7b6"/>
-    <circle cx="99" cy="18" r="5" fill="#dfe3d6"/><circle cx="107" cy="10" r="4" fill="#e4e8dc"/>
-    <circle cx="34" cy="24" r="12" fill="#eae4d2" stroke="${c}" stroke-width="2"/>
-    <line x1="34" y1="12" x2="34" y2="36" stroke="#c3bba4" stroke-width="1"/>
-    <line x1="22" y1="24" x2="46" y2="24" stroke="#c3bba4" stroke-width="1"/>
-    <rect x="0" y="80" width="120" height="10" fill="#c7cbb9"/>`,
-  // 4 Middle East — parliament chamber, tiers of benches + figures + rostrum
+  // 1 EUROPE — a bridge span over a swollen river, two boats, slanting rain
+  1: (c) => `<rect x="0" y="0" width="200" height="140" fill="#dbe4ee"/>
+    <rect x="0" y="86" width="200" height="54" fill="#7f9ab4"/>
+    <path d="M0 94 Q25 88 50 94 T100 94 T150 94 T200 94" stroke="#6f8aa4" stroke-width="2" fill="none"/>
+    <path d="M0 112 Q30 105 60 112 T120 112 T180 112" stroke="#8fa8bf" stroke-width="2" fill="none"/>
+    <path d="M0 126 Q34 120 68 126 T136 126 T200 126" stroke="#6f8aa4" stroke-width="2" fill="none"/>
+    <line x1="6" y1="58" x2="194" y2="58" stroke="${c}" stroke-width="7"/>
+    <path d="M22 58 Q42 28 62 58" stroke="${c}" stroke-width="5" fill="none"/>
+    <path d="M78 58 Q98 28 118 58" stroke="${c}" stroke-width="5" fill="none"/>
+    <path d="M134 58 Q154 30 174 58" stroke="${c}" stroke-width="5" fill="none"/>
+    <line x1="22" y1="58" x2="22" y2="90" stroke="${c}" stroke-width="3"/>
+    <line x1="118" y1="58" x2="118" y2="90" stroke="${c}" stroke-width="3"/>
+    <line x1="174" y1="58" x2="174" y2="90" stroke="${c}" stroke-width="3"/>
+    <path d="M42 100 h22 l-5 10 h-12 z" fill="#2f4a66"/><line x1="53" y1="100" x2="53" y2="88" stroke="#2f4a66" stroke-width="2"/>
+    <path d="M140 116 h22 l-5 10 h-12 z" fill="#2f4a66"/><line x1="151" y1="116" x2="151" y2="104" stroke="#2f4a66" stroke-width="2"/>
+    <g stroke="#b6c6d8" stroke-width="2" stroke-linecap="round">
+      <line x1="30" y1="12" x2="22" y2="34"/><line x1="58" y1="8" x2="50" y2="30"/>
+      <line x1="92" y1="14" x2="84" y2="36"/><line x1="126" y1="10" x2="118" y2="32"/>
+      <line x1="160" y1="16" x2="152" y2="38"/><line x1="186" y1="22" x2="178" y2="44"/></g>`,
+
+  // 2 AMERICAS — a hillside of trees under drifting smoke with a low fire line
+  2: (c) => `<rect x="0" y="0" width="200" height="140" fill="#f0e3d2"/>
+    <path d="M0 104 Q46 72 92 104 T200 104 L200 140 L0 140 Z" fill="#8f8a62"/>
+    <path d="M0 122 Q50 100 100 122 T200 122 L200 140 L0 140 Z" fill="#767a4e"/>
+    <path d="M34 116 l11 -28 l11 28 z" fill="#4f5a35"/><line x1="45" y1="116" x2="45" y2="128" stroke="#4f5a35" stroke-width="3"/>
+    <path d="M64 118 l9 -22 l9 22 z" fill="#4f5a35"/><line x1="73" y1="118" x2="73" y2="128" stroke="#4f5a35" stroke-width="3"/>
+    <path d="M150 114 l11 -26 l11 26 z" fill="#4f5a35"/><line x1="161" y1="114" x2="161" y2="126" stroke="#4f5a35" stroke-width="3"/>
+    <path d="M118 120 l9 -22 l9 22 z" fill="#4f5a35"/><line x1="127" y1="120" x2="127" y2="130" stroke="#4f5a35" stroke-width="3"/>
+    <path d="M10 102 q16 -11 10 -28 q24 11 13 35" stroke="#c9a17c" stroke-width="9" fill="none" stroke-linecap="round" opacity="0.8"/>
+    <path d="M86 98 q20 -13 11 -33 q27 14 13 39" stroke="#c49a72" stroke-width="11" fill="none" stroke-linecap="round" opacity="0.75"/>
+    <path d="M152 100 q16 -9 8 -25 q22 10 11 31" stroke="#c9a17c" stroke-width="9" fill="none" stroke-linecap="round" opacity="0.8"/>
+    <path d="M6 119 H194" stroke="#d8762a" stroke-width="4" stroke-dasharray="7 5"/>`,
+
+  // 3 ASIA — a fabrication plant beside a wafer disc and two steaming towers
+  3: (c) => `<rect x="0" y="0" width="200" height="140" fill="#e9ece3"/>
+    <path d="M18 70 H130" stroke="${c}" stroke-width="5"/>
+    <rect x="18" y="70" width="112" height="54" fill="#cdd2c1"/>
+    <rect x="28" y="82" width="16" height="18" fill="#b7bdaa"/><rect x="54" y="82" width="16" height="18" fill="#b7bdaa"/>
+    <rect x="80" y="82" width="16" height="18" fill="#b7bdaa"/><rect x="106" y="82" width="16" height="18" fill="#b7bdaa"/>
+    <rect x="150" y="46" width="42" height="78" fill="#d7dbcb"/>
+    <rect x="154" y="34" width="11" height="44" fill="#c2c7b6"/>
+    <circle cx="171" cy="26" r="8" fill="#dfe3d6"/><circle cx="185" cy="14" r="6" fill="#e4e8dc"/>
+    <circle cx="52" cy="38" r="21" fill="#eae4d2" stroke="${c}" stroke-width="3"/>
+    <line x1="52" y1="17" x2="52" y2="59" stroke="#c3bba4" stroke-width="1.5"/>
+    <line x1="31" y1="38" x2="73" y2="38" stroke="#c3bba4" stroke-width="1.5"/>
+    <rect x="0" y="124" width="200" height="16" fill="#c7cbb9"/>`,
+
+  // 4 MIDDLE EAST — a chamber of tiered benches with rows of figures
   4: (c) => {
     const g = [];
-    [[34, 5, 30], [50, 6, 24], [64, 7, 18]].forEach(([y, n, x0], i) => {
+    [[46, 5, 30], [72, 6, 22], [98, 7, 14]].forEach(([y, n, x0], i) => {
       for (let k = 0; k < n; k++) {
-        const x = x0 + k * 12;
-        g.push(`<rect x="${x}" y="${y}" width="10" height="4" rx="1.5" fill="#c9bfa8"/>`);
-        if ((k + i) % 2 === 0)
-          g.push(`<circle cx="${x + 5}" cy="${y - 9}" r="3" fill="${c}"/><rect x="${x + 2.5}" y="${y - 6}" width="5" height="6" rx="1" fill="${c}" opacity="0.85"/>`);
+        const x = x0 + k * 26;
+        g.push(`<rect x="${x}" y="${y}" width="22" height="7" rx="2.5" fill="#c9bfa8"/>`);
+        if ((k + i) % 2 === 0) {
+          g.push(`<circle cx="${x + 11}" cy="${y - 14}" r="5" fill="${c}"/><rect x="${x + 6}" y="${y - 10}" width="10" height="10" rx="2" fill="${c}" opacity="0.85"/>`);
+        }
       }
     });
-    return `<rect x="0" y="0" width="120" height="90" fill="#efe9dc"/>
-    <line x1="0" y1="88" x2="120" y2="88" stroke="#d3c9b3"/>
+    return `<rect x="0" y="0" width="200" height="140" fill="#efe9dc"/>
+    <line x1="0" y1="136" x2="200" y2="136" stroke="#d3c9b3" stroke-width="2"/>
     ${g.join('')}
-    <rect x="46" y="74" width="28" height="11" rx="2" fill="#8a7f66"/>
-    <rect x="58" y="69" width="4" height="5" fill="#6f6650"/>`;
+    <rect x="76" y="114" width="48" height="19" rx="3" fill="#8a7f66"/>
+    <rect x="96" y="105" width="7" height="9" fill="#6f6650"/>`;
   },
-  // 5 Africa — field clinic tent, queue of figures, sun
-  5: (c) => `${sky('#f0ede2')}
-    <rect x="0" y="72" width="120" height="18" fill="#cfc9b6"/>
-    <path d="M14 72 L40 34 L66 72 Z" fill="#cfd8c6"/>
-    <path d="M36 72 L40 62 L44 72 Z" fill="#a8b79c"/>
-    <line x1="40" y1="34" x2="40" y2="25" stroke="${c}" stroke-width="2"/>
-    <path d="M40 25 l11 4 l-11 4 z" fill="${c}"/>
-    <circle cx="101" cy="20" r="8" fill="#e7d9a8"/>
+
+  // 5 AFRICA — a field clinic tent with a queue of figures under a high sun
+  5: (c) => `<rect x="0" y="0" width="200" height="140" fill="#f0ede2"/>
+    <rect x="0" y="110" width="200" height="30" fill="#cfc9b6"/>
+    <path d="M22 110 L66 50 L110 110 Z" fill="#cfd8c6"/>
+    <path d="M58 110 L66 92 L74 110 Z" fill="#a8b79c"/>
+    <line x1="66" y1="50" x2="66" y2="34" stroke="${c}" stroke-width="3"/>
+    <path d="M66 34 l18 6 l-18 6 z" fill="${c}"/>
+    <circle cx="168" cy="34" r="13" fill="#e7d9a8"/>
     <g fill="#6d7a5d">
-      <circle cx="78" cy="52" r="3.4"/><rect x="75" y="56" width="6" height="16" rx="2"/>
-      <circle cx="90" cy="52" r="3.4"/><rect x="87" y="56" width="6" height="16" rx="2"/>
-      <circle cx="102" cy="52" r="3.4"/><rect x="99" y="56" width="6" height="16" rx="2"/>
-      <circle cx="114" cy="52" r="3.4"/><rect x="111" y="56" width="6" height="16" rx="2"/></g>`,
-  // 6 Oceania — cyclone over a coastline lined with houses
-  6: (c) => `${sky('#e7eef1')}
-    <rect x="0" y="30" width="60" height="60" fill="#7f9ab4"/>
-    <path d="M56 90 L56 58 Q80 48 120 54 L120 90 Z" fill="#8a9c6a"/>
-    <rect x="78" y="60" width="12" height="10" fill="#e0d7c2"/><path d="M76 60 L84 52 L92 60 Z" fill="#b5533e"/>
-    <rect x="98" y="62" width="11" height="8" fill="#e0d7c2"/><path d="M96 62 L103.5 55 L111 62 Z" fill="#b5533e"/>
-    <line x1="70" y1="74" x2="70" y2="60" stroke="#5d6b45" stroke-width="2"/>
-    <path d="M70 60 q-8 -4 -10 -10 M70 60 q8 -4 10 -10 M70 60 q0 -8 0 -12" stroke="#5d6b45" stroke-width="1.6" fill="none"/>
-    <path d="M48 20 a16 16 0 1 1 -16 16" fill="none" stroke="${c}" stroke-width="3"/>
-    <path d="M42 30 a9 9 0 1 1 -9 9" fill="none" stroke="${c}" stroke-width="2.5"/>
-    <circle cx="36" cy="35" r="3" fill="${c}"/>`,
-  // 7 Europe — inflation eases: falling line chart over low bars
-  7: (c) => `<rect x="0" y="0" width="120" height="90" fill="#fbf7ef"/>
-    <g stroke="#ddd6c6" stroke-width="1">
-      <line x1="18" y1="24" x2="112" y2="24"/><line x1="18" y1="42" x2="112" y2="42"/>
-      <line x1="18" y1="60" x2="112" y2="60"/><line x1="42" y1="12" x2="42" y2="78"/>
-      <line x1="66" y1="12" x2="66" y2="78"/><line x1="90" y1="12" x2="90" y2="78"/></g>
-    <line x1="18" y1="12" x2="18" y2="78" stroke="#8a8168" stroke-width="2"/>
-    <line x1="18" y1="78" x2="112" y2="78" stroke="#8a8168" stroke-width="2"/>
-    <g fill="#cdd3c2">
-      <rect x="30" y="58" width="9" height="20"/><rect x="54" y="48" width="9" height="30"/>
-      <rect x="78" y="54" width="9" height="24"/><rect x="100" y="64" width="9" height="14"/></g>
-    <polyline points="24,28 46,34 68,48 90,58 108,68" fill="none" stroke="${c}" stroke-width="3"/>
-    <g fill="${c}"><circle cx="24" cy="28" r="2.5"/><circle cx="46" cy="34" r="2.5"/><circle cx="68" cy="48" r="2.5"/><circle cx="90" cy="58" r="2.5"/><circle cx="108" cy="68" r="2.5"/></g>`,
-  // 8 Asia — lunar relay satellite above the Earth limb + ground dish + stars
-  8: (c) => `${sky('#eef3f7')}
-    <g fill="#c3ccd6"><circle cx="14" cy="14" r="1.4"/><circle cx="34" cy="8" r="1.1"/><circle cx="98" cy="12" r="1.4"/><circle cx="112" cy="26" r="1.1"/><circle cx="80" cy="6" r="1"/></g>
-    <path d="M0 78 Q60 52 120 78 L120 90 L0 90 Z" fill="#9db8cf"/>
-    <rect x="52" y="24" width="16" height="13" rx="2" fill="#8a93a0"/>
-    <rect x="30" y="26" width="20" height="8" fill="${c}"/><rect x="70" y="26" width="20" height="8" fill="${c}"/>
-    <line x1="52" y1="31" x2="50" y2="31" stroke="#8a93a0" stroke-width="2"/>
-    <path d="M60 37 v8" stroke="#8a93a0" stroke-width="2"/>
-    <path d="M88 76 Q100 62 112 76" fill="#b9c3cc" stroke="#8a949f" stroke-width="1.5"/>
-    <line x1="100" y1="76" x2="100" y2="84" stroke="#8a949f" stroke-width="2"/>`,
-  // 9 Americas — colonnaded courthouse on broad steps, two figures
-  9: (c) => `${sky('#eef0ee')}
-    <path d="M24 34 L60 16 L96 34 Z" fill="#e2ded1" stroke="#b9b3a2" stroke-width="1.5"/>
-    <rect x="24" y="34" width="72" height="8" fill="#d8d3c5"/>
-    <g fill="#e6e2d6" stroke="#c6c0b0" stroke-width="1">
-      <rect x="30" y="42" width="6" height="26"/><rect x="44" y="42" width="6" height="26"/>
-      <rect x="58" y="42" width="6" height="26"/><rect x="72" y="42" width="6" height="26"/>
-      <rect x="86" y="42" width="6" height="26"/></g>
-    <rect x="24" y="68" width="72" height="7" fill="#d8d3c5"/>
-    <rect x="18" y="75" width="84" height="4" fill="#cfc9b8"/>
-    <rect x="12" y="79" width="96" height="4" fill="#c6c0af"/>
-    <rect x="6" y="83" width="108" height="7" fill="#bcb6a5"/>
-    <g fill="${c}">
-      <circle cx="42" cy="72" r="2.6"/><rect x="39.5" y="75" width="5" height="8" rx="1.5"/>
-      <circle cx="76" cy="72" r="2.6"/><rect x="73.5" y="75" width="5" height="8" rx="1.5"/></g>`,
-  // 10 Africa — freight train on rails between the sea and low hills
-  10: (c) => `${sky('#e8eef0')}
-    <rect x="0" y="18" width="34" height="72" fill="#7f9ab4"/>
-    <path d="M34 62 Q72 44 120 60 L120 90 L34 90 Z" fill="#9aa77e"/>
-    <path d="M40 74 H120" stroke="#8a8168" stroke-width="1.5"/>
-    <path d="M40 82 H120" stroke="#8a8168" stroke-width="1.5"/>
-    <g stroke="#a49b83" stroke-width="1.5">
-      <line x1="46" y1="72" x2="46" y2="84"/><line x1="60" y1="72" x2="60" y2="84"/>
-      <line x1="74" y1="72" x2="74" y2="84"/><line x1="88" y1="72" x2="88" y2="84"/>
-      <line x1="102" y1="72" x2="102" y2="84"/><line x1="114" y1="72" x2="114" y2="84"/></g>
-    <rect x="48" y="60" width="30" height="14" rx="2" fill="${c}"/>
-    <rect x="52" y="64" width="6" height="6" fill="#e8eef0"/><rect x="62" y="64" width="6" height="6" fill="#e8eef0"/><rect x="70" y="64" width="6" height="6" fill="#e8eef0"/>
-    <rect x="82" y="60" width="30" height="14" rx="2" fill="#c8ccc0"/>
-    <rect x="86" y="64" width="6" height="6" fill="#eef1f4"/><rect x="96" y="64" width="6" height="6" fill="#eef1f4"/><rect x="104" y="64" width="6" height="6" fill="#eef1f4"/>
-    <g fill="#5c5a50"><circle cx="56" cy="76" r="2.6"/><circle cx="72" cy="76" r="2.6"/><circle cx="90" cy="76" r="2.6"/><circle cx="106" cy="76" r="2.6"/></g>`,
+      <circle cx="126" cy="84" r="5"/><rect x="121" y="90" width="10" height="24" rx="3"/>
+      <circle cx="146" cy="84" r="5"/><rect x="141" y="90" width="10" height="24" rx="3"/>
+      <circle cx="166" cy="84" r="5"/><rect x="161" y="90" width="10" height="24" rx="3"/>
+      <circle cx="186" cy="84" r="5"/><rect x="181" y="90" width="10" height="24" rx="3"/></g>`,
+
+  // 6 OCEANIA — a spiral storm over a coastline lined with small houses
+  6: (c) => `<rect x="0" y="0" width="200" height="140" fill="#e7eef1"/>
+    <rect x="0" y="46" width="96" height="94" fill="#7f9ab4"/>
+    <path d="M92 140 L92 88 Q130 72 200 82 L200 140 Z" fill="#8a9c6a"/>
+    <rect x="128" y="92" width="20" height="16" fill="#e0d7c2"/><path d="M124 92 L138 79 L152 92 Z" fill="#b5533e"/>
+    <rect x="162" y="96" width="18" height="13" fill="#e0d7c2"/><path d="M158 96 L171 85 L184 96 Z" fill="#b5533e"/>
+    <line x1="114" y1="114" x2="114" y2="92" stroke="#5d6b45" stroke-width="3"/>
+    <path d="M114 92 q-13 -6 -16 -16 M114 92 q13 -6 16 -16 M114 92 q0 -13 0 -19" stroke="#5d6b45" stroke-width="2.5" fill="none"/>
+    <path d="M78 26 a26 26 0 1 1 -26 26" fill="none" stroke="${c}" stroke-width="5"/>
+    <path d="M70 44 a15 15 0 1 1 -15 15" fill="none" stroke="${c}" stroke-width="4"/>
+    <circle cx="60" cy="50" r="5" fill="${c}"/>`,
 };
 
 const sceneSVG = (it) => {
   const fn = SCENES[it.num] || SCENES[1];
-  return `<svg class="scene" viewBox="0 0 120 90" width="120" height="90" role="img" aria-label="${esc(it.scene)}"><title>${esc(it.scene)}</title>${fn(ink(it.region))}</svg>`;
+  return `<svg class="scene" viewBox="0 0 200 140" width="200" height="140" role="img" aria-label="${esc(it.scene)}"><title>${esc(it.scene)}</title>${fn(ink(it.region))}</svg>`;
 };
 
-// ---- simple outline world map with numbered dots ----------------------------
+// ---- one outline world map, LARGER, with six numbered dots --------------------
 const LAND = `
-  <path d="M70 96 L120 62 L200 52 L286 66 L304 104 L262 132 L236 170 L206 178 L190 154 L150 140 L118 156 L92 138 Z" fill="#ddd6c3" stroke="#b3ab95" stroke-width="1.5"/>
-  <path d="M330 46 L372 40 L386 62 L354 74 Z" fill="#ddd6c3" stroke="#b3ab95" stroke-width="1.5"/>
-  <path d="M262 150 L318 148 L336 184 L322 226 L296 238 L276 222 L268 182 Z" fill="#ddd6c3" stroke="#b3ab95" stroke-width="1.5"/>
-  <path d="M470 62 L520 50 L560 60 L574 88 L548 108 L506 110 L478 96 Z" fill="#ddd6c3" stroke="#b3ab95" stroke-width="1.5"/>
-  <path d="M480 118 L546 112 L600 132 L606 172 L584 214 L556 230 L536 206 L512 176 L478 150 Z" fill="#ddd6c3" stroke="#b3ab95" stroke-width="1.5"/>
-  <path d="M572 74 L660 44 L770 40 L872 62 L908 100 L872 138 L812 148 L772 126 L706 140 L646 122 L600 100 Z" fill="#ddd6c3" stroke="#b3ab95" stroke-width="1.5"/>
-  <path d="M792 168 L872 166 L900 196 L878 232 L826 234 L794 208 Z" fill="#ddd6c3" stroke="#b3ab95" stroke-width="1.5"/>`;
+  <path d="M70 96 L120 62 L200 52 L286 66 L304 104 L262 132 L236 170 L206 178 L190 154 L150 140 L118 156 L92 138 Z" fill="#ddd6c3" stroke="#b3ab95" stroke-width="2"/>
+  <path d="M330 46 L372 40 L386 62 L354 74 Z" fill="#ddd6c3" stroke="#b3ab95" stroke-width="2"/>
+  <path d="M262 150 L318 148 L336 184 L322 226 L296 238 L276 222 L268 182 Z" fill="#ddd6c3" stroke="#b3ab95" stroke-width="2"/>
+  <path d="M470 62 L520 50 L560 60 L574 88 L548 108 L506 110 L478 96 Z" fill="#ddd6c3" stroke="#b3ab95" stroke-width="2"/>
+  <path d="M480 118 L546 112 L600 132 L606 172 L584 214 L556 230 L536 206 L512 176 L478 150 Z" fill="#ddd6c3" stroke="#b3ab95" stroke-width="2"/>
+  <path d="M572 74 L660 44 L770 40 L872 62 L908 100 L872 138 L812 148 L772 126 L706 140 L646 122 L600 100 Z" fill="#ddd6c3" stroke="#b3ab95" stroke-width="2"/>
+  <path d="M792 168 L872 166 L900 196 L878 232 L826 234 L794 208 Z" fill="#ddd6c3" stroke="#b3ab95" stroke-width="2"/>`;
 
 const DOTS = [
-  [1, 505, 76], [2, 120, 54], [3, 852, 82], [4, 644, 104], [5, 556, 152],
-  [6, 906, 200], [7, 552, 96], [8, 722, 66], [9, 286, 196], [10, 592, 180],
+  [1, 505, 78], [2, 130, 62], [3, 848, 86], [4, 646, 106], [5, 556, 158], [6, 902, 202],
 ];
-const featured = sorted.slice(0, 10);
+
+const featured = sorted.slice(0, 6);
+const list = sorted.slice(6);
 const byNum = Object.fromEntries(featured.map((f) => [f.num, f]));
 const dots = DOTS.map(([n, x, y]) => {
   const r = (byNum[n] && byNum[n].region) || 'Europe';
-  return `<circle cx="${x}" cy="${y}" r="13" fill="${ink(r)}"/><text x="${x}" y="${y}" dy="5" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">${n}</text>`;
+  return `<circle cx="${x}" cy="${y}" r="17" fill="${ink(r)}"/><text x="${x}" y="${y}" dy="6" text-anchor="middle" font-size="19" font-weight="700" fill="#fff">${n}</text>`;
 }).join('');
-const mapSVG = `<svg class="map" viewBox="0 0 1000 240" role="img" aria-label="world map with numbered dots">${LAND}${dots}</svg>`;
+const mapSVG = `<svg class="map" viewBox="0 0 1000 250" role="img" aria-label="world map with six numbered dots">${LAND}${dots}</svg>`;
 
-// ---- four figures pulled verbatim from featured facts -----------------------
+// ---- four very large figures, every one verbatim from a featured fact ---------
 const FIGURES = [
   { v: '480,000', l: 'hectares burned' },
   { v: '14 million', l: 'jabs in six weeks' },
   { v: '240 km/h', l: 'cyclone gusts' },
-  { v: '1,200', l: 'tonnes a day' },
+  { v: '4.2 metres', l: 'above the seasonal level' },
 ];
 for (const f of FIGURES)
-  if (!sorted.some((s) => s.fact.includes(f.v)))
-    console.warn('WARN figure not found verbatim:', f.v);
-
-const list = sorted.slice(10);
-const kick = (s) => esc(String(s).toUpperCase());
+  if (!featured.some((s) => s.fact.includes(f.v)))
+    console.warn('WARN figure not found verbatim in featured six:', f.v);
 
 const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>THE WORLD TODAY - Wednesday 18 November 2026</title>
+<title>THE WORLD TODAY - Wednesday 18 November 2026 (variant B)</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   html, body { width:1024px; height:1024px; }
-  body { background:#f7f3ea; color:#1a1811; overflow:hidden; font-family:'DejaVu Sans', Arial, sans-serif; display:flex; flex-direction:column; padding:15px 28px 12px; }
-  .mast { text-align:center; font-family:'DejaVu Serif', Georgia, serif; font-weight:700; font-size:22px; letter-spacing:11px; }
-  .kicker { text-align:center; font-size:9.5px; letter-spacing:5px; color:#7a7362; margin-top:3px; }
-  .date { text-align:center; font-family:'DejaVu Serif', Georgia, serif; font-weight:700; font-size:46px; line-height:1.02; margin-top:5px; }
-  .tally { text-align:center; font-size:12.5px; font-weight:700; letter-spacing:3px; color:#a8281f; margin-top:5px; }
-  .hr { border:0; border-top:3px double #1a1811; margin-top:7px; }
-  .featured { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin-top:8px; }
-  .card { border:1px solid #e2dac9; border-top:3px solid var(--cc); border-radius:5px; background:#fffdf8; padding:6px 6px 7px; display:flex; flex-direction:column; align-items:center; overflow:hidden; }
+  body { background:#f7f3ea; color:#1a1811; overflow:hidden; font-family:'DejaVu Sans', Arial, sans-serif; display:flex; flex-direction:column; padding:12px 26px 8px; }
+  .mast { text-align:center; font-family:'DejaVu Serif', Georgia, serif; font-weight:700; font-size:17px; letter-spacing:10px; }
+  .kicker { text-align:center; font-size:9px; letter-spacing:5px; color:#7a7362; margin-top:1px; }
+  .date { text-align:center; font-family:'DejaVu Serif', Georgia, serif; font-weight:700; font-size:42px; line-height:1; margin-top:3px; }
+  .tally { text-align:center; font-size:12px; font-weight:700; letter-spacing:3px; color:#a8281f; margin-top:4px; }
+  .hr { border:0; border-top:3px double #1a1811; margin-top:5px; }
+  .featured { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:6px; }
+  .card { border:1px solid #e2dac9; border-top:3px solid var(--cc); border-radius:5px; background:#fffdf8; padding:3px 6px 4px; display:flex; flex-direction:column; align-items:center; overflow:hidden; }
   .card svg.scene { display:block; border-radius:3px; border:1px solid #e6ded0; }
-  .card .rg { font-size:8px; font-weight:700; letter-spacing:0.7px; text-transform:uppercase; color:#57503f; margin-top:4px; text-align:center; }
-  .card h3 { font-family:'DejaVu Serif', Georgia, serif; font-size:11px; font-weight:700; line-height:1.08; margin-top:2px; text-align:center; }
-  .card p { font-size:8.5px; line-height:1.12; color:#514a3a; margin-top:2px; text-align:center; }
-  .numhead { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#7a7362; text-align:center; margin-top:8px; }
-  .numbers { display:flex; border-top:2px solid #1a1811; border-bottom:2px solid #1a1811; padding:5px 0; margin-top:3px; }
-  .num { flex:1 1 0; text-align:center; }
-  .num .v { font-family:'DejaVu Serif', Georgia, serif; font-size:28px; font-weight:700; line-height:1; letter-spacing:-0.5px; }
-  .num .l { font-size:8.5px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:#7a7362; margin-top:3px; }
-  .mapwrap { margin-top:8px; }
+  .card .rg { font-size:9px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; color:#57503f; margin-top:3px; text-align:center; }
+  .card h3 { font-family:'DejaVu Serif', Georgia, serif; font-size:15.5px; font-weight:700; line-height:1.06; margin-top:3px; text-align:center; }
+  .card p { font-size:9.5px; line-height:1.12; color:#514a3a; margin-top:2px; text-align:center; }
+  .mapwrap { margin:6px -26px 0; }
   .map { width:100%; height:auto; display:block; }
-  .mapcap { text-align:center; font-size:9px; letter-spacing:1.2px; text-transform:uppercase; color:#7a7362; margin-top:2px; }
-  .list { margin-top:8px; border-top:2px solid #1a1811; padding-top:6px; column-count:3; column-gap:20px; }
-  .item { display:flex; gap:5px; align-items:baseline; font-size:9.5px; line-height:1.4; margin-bottom:1px; break-inside:avoid; }
-  .item b { flex:0 0 auto; min-width:15px; text-align:right; font-weight:700; }
-  .item .rt { flex:0 0 auto; font-size:7.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.3px; }
+  .mapcap { text-align:center; font-size:9px; letter-spacing:1.2px; text-transform:uppercase; color:#7a7362; margin-top:1px; }
+  .numhead { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#7a7362; text-align:center; margin-top:4px; }
+  .numbers { display:flex; border-top:2px solid #1a1811; border-bottom:2px solid #1a1811; padding:4px 0; margin-top:3px; }
+  .num { flex:1 1 0; text-align:center; }
+  .num .v { font-family:'DejaVu Serif', Georgia, serif; font-size:38px; font-weight:700; line-height:1; letter-spacing:-1px; }
+  .num .l { font-size:9px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:#7a7362; margin-top:3px; }
+  .list { margin-top:8px; border-top:2px solid #1a1811; padding-top:5px; column-count:4; column-gap:16px; }
+  .item { display:flex; gap:4px; align-items:baseline; font-size:8.7px; line-height:1.15; margin-bottom:0px; break-inside:avoid; }
+  .item b { flex:0 0 auto; min-width:14px; text-align:right; font-weight:700; }
+  .item .rt { flex:0 0 auto; font-size:7px; font-weight:700; text-transform:uppercase; letter-spacing:0.3px; }
   .item .ht { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   .foot { margin-top:auto; border-top:2px solid #1a1811; padding-top:5px; display:flex; justify-content:space-between; gap:14px; font-size:9px; letter-spacing:0.8px; text-transform:uppercase; color:#7a7362; }
   .foot .say { color:#a8281f; font-weight:700; }
@@ -244,7 +203,7 @@ const html = `<!DOCTYPE html>
 </head>
 <body>
   <div class="mast">THE WORLD TODAY</div>
-  <div class="kicker">INDEPENDENT WORLD EDITION</div>
+  <div class="kicker">INDEPENDENT WORLD EDITION &middot; VARIANT B</div>
   <div class="date">WEDNESDAY 18 NOVEMBER 2026</div>
   <div class="tally">${sorted.length} STORIES &middot; SIX CONTINENTS &middot; ONE DAY</div>
   <hr class="hr">
@@ -258,18 +217,18 @@ ${featured.map((it) => `    <div class="card" style="--cc:${ink(it.region)}">
     </div>`).join('\n')}
   </div>
 
+  <div class="mapwrap">
+    ${mapSVG}
+    <div class="mapcap">The six numbered dots mark the featured stories 1&ndash;6, one to a continent</div>
+  </div>
+
   <div class="numhead">By the numbers</div>
   <div class="numbers">
 ${FIGURES.map((f) => `    <div class="num"><div class="v">${esc(f.v)}</div><div class="l">${esc(f.l)}</div></div>`).join('\n')}
   </div>
 
-  <div class="mapwrap">
-    ${mapSVG}
-    <div class="mapcap">The ten numbered dots mark the featured stories 1&ndash;10</div>
-  </div>
-
   <div class="list">
-${list.map((it) => `    <div class="item"><b style="color:${ink(it.region)}">${it.num}</b><span class="rt" style="color:${ink(it.region)}">${esc(it.region)}</span><span class="ht">${esc(it.headline)}</span></div>`).join('\n')}
+${list.map((it) => `    <div class="item"><b style="color:${ink(it.region)}">${it.num}</b><span class="ht">${esc(it.headline)}</span></div>`).join('\n')}
   </div>
 
   <div class="foot">
@@ -285,6 +244,8 @@ ${list.map((it) => `    <div class="item"><b style="color:${ink(it.region)}">${i
         featured: document.querySelectorAll('.card').length,
         items: document.querySelectorAll('.item').length,
         scenes: document.querySelectorAll('svg.scene').length,
+        dots: document.querySelectorAll('.map circle').length,
+        figs: document.querySelectorAll('.num .v').length,
         scenePx: (function () { var r = document.querySelector('svg.scene').getBoundingClientRect(); return Math.round(r.width) + 'x' + Math.round(r.height); })()
       };
       var bad = [];
@@ -298,6 +259,9 @@ ${list.map((it) => `    <div class="item"><b style="color:${ink(it.region)}">${i
       var f = document.querySelector('.featured'); if (f.scrollHeight > f.clientHeight + 1) bad.push('featured-overflow');
       var l = document.querySelector('.list'); if (l.scrollHeight > l.clientHeight + 1) bad.push('list-overflow');
       document.querySelectorAll('.item .ht').forEach(function (x) { if (x.scrollWidth > x.clientWidth + 1) bad.push('list-truncated'); });
+      if (out.featured !== 6) bad.push('featured!=' + out.featured);
+      if (out.items !== 30) bad.push('items!=' + out.items);
+      if (out.dots !== 6) bad.push('dots!=' + out.dots);
       out.overflow = bad;
       document.getElementById('diag').textContent = JSON.stringify(out);
       return out;
@@ -308,7 +272,7 @@ ${list.map((it) => `    <div class="item"><b style="color:${ink(it.region)}">${i
 `;
 
 writeFileSync(join(here, 'page.html'), html);
-console.log('page.html', html.length, 'bytes; featured:', featured.length, 'list:', list.length, 'scenes:', Object.keys(SCENES).length);
+console.log('page.html', html.length, 'bytes; featured:', featured.length, 'list:', list.length, 'scenes:', Object.keys(SCENES).length, 'dots:', DOTS.length);
 
 const r = spawnSync(process.execPath, [join(here, 'render.mjs'), 'entry.png'], { cwd: here, stdio: 'inherit' });
 if (r.status !== 0) process.exit(r.status || 1);

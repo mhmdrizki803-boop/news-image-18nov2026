@@ -1,4 +1,6 @@
-// render.mjs — screenshot page.html to a PNG at exactly 1024x1024 with headless Chromium.
+// render.mjs — variant B: screenshot this dir's page.html to a 1024x1024 PNG
+// with the local Chromium build. Reads window.__diag() before shooting so layout
+// faults surface as text, not as a silently clipped picture.
 import { writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
