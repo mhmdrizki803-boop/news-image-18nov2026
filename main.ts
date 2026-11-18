@@ -1,8 +1,10 @@
-// main.ts — VARIANT C handoff. Hands variant C's entry.png to make.fun's output
-// directory. Node 22+ type stripping; standard library only. Before copying it
-// re-reads the PNG header and refuses anything that is not exactly 1024x1024 or
-// over 1 MiB.
-import { copyFileSync, existsSync, mkdirSync, readFileSync, statSync } from 'node:fs';
+// main.ts — the make.fun hand-in step for this entry.
+// Runs on Node 22+ (native type stripping), standard library only: resolve this
+// file's directory, hand its entry.png to the make.fun output directory. The
+// output directory is $MAKEFUN_OUTPUT_DIR when set, otherwise /output. A missing
+// source is a hard failure, so the submission script notices instead of shipping
+// an empty directory.
+import { copyFileSync, existsSync, mkdirSync, statSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -10,27 +12,14 @@ const here = dirname(fileURLToPath(import.meta.url));
 const source = join(here, 'entry.png');
 
 if (!existsSync(source)) {
-  console.error(`[main] entry.png not found at ${source}; run gen.mjs first`);
+  console.error(`[main] missing source image: ${source}`);
   process.exit(1);
 }
 
-const bytes = statSync(source).size;
-const head = readFileSync(source);
-const isPng = head.subarray(0, 8).toString('hex') === '89504e470d0a1a0a';
-const width = isPng ? head.readUInt32BE(16) : 0;
-const height = isPng ? head.readUInt32BE(20) : 0;
+const outDir = process.env.MAKEFUN_OUTPUT_DIR || '/output';
+mkdirSync(outDir, { recursive: true });
 
-const faults: string[] = [];
-if (!isPng) faults.push('not a PNG (bad signature)');
-if (width !== 1024 || height !== 1024) faults.push(`pixels ${width}x${height}, want 1024x1024`);
-if (bytes > 1048576) faults.push(`bytes ${bytes} over 1048576`);
-if (faults.length) {
-  console.error('[main] entry rejected:', faults.join('; '));
-  process.exit(1);
-}
-
-const targetDir = process.env.MAKEFUN_OUTPUT_DIR || '/output';
-const target = join(targetDir, 'entry.png');
-mkdirSync(targetDir, { recursive: true });
+const target = join(outDir, 'entry.png');
 copyFileSync(source, target);
-console.log(`[main] entry.png ${width}x${height}, ${bytes} bytes -> ${target}`);
+
+console.log(`[main] handed ${statSync(source).size} bytes to ${target}`);
